@@ -1,0 +1,96 @@
+@import '../../variables.scss';
+
+.sidebar {
+    min-width: 270px;
+    height: 100vh;
+    border-right: $thin;
+    padding: 0px 30px 30px 30px;
+    color: $text;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.logo{
+    width: 100px;
+    fill: $text;
+    &__wrapper{
+        width: 100%;
+        min-height: 75px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+}
+
+.navlink__wrapper{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    &_line{
+        &:not(:last-child) {
+            padding-bottom: 20px;
+            border-bottom: $thin;
+        }
+    }
+}
+
+.navlink{
+    width: 100%;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+
+    &::after{
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        width: 100%;
+        opacity: 0;
+        height: 0.5px;
+        background: $accent;
+        transform: translateX(-50%);
+        transition: $fst-transition;
+    }
+
+    &:hover::after{
+        opacity: 1;
+    }
+    
+    
+    &:focus-visible{
+        outline-color: $accent;
+        outline-offset: 3px;
+        outline-style: solid;
+    }
+
+    &__icon{
+        margin-right: 20px;
+        width: 18px;
+        height: 18px;
+        fill: $text;
+        stroke: $text;
+        transition: $fst-transition;
+    }
+    &__title{
+        font-size: 16px;
+        color: $text;
+    }
+}
+
+.active{
+    .navlink__icon{
+        fill: $accent;
+        stroke: $accent;
+    }
+
+    &::after{
+        opacity: 1;
+    }
+}

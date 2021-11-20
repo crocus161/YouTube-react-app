@@ -1,0 +1,16 @@
+@import '../variables.scss';
+
+.app{
+    width: 100%;
+    min-height: 100vh;
+    background: rgb(23,28,34);
+    filter: opacity(90%);
+
+    display: flex;
+}
+
+.wrapper{
+    flex-grow: 1;
+    flex-basis: 75%;
+    min-height: 100vh;
+}
