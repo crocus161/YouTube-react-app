@@ -1,6 +1,6 @@
 import Link from './Link';
 import styles from './Sidebar.module.scss';
-import { ReactComponent as LogoIcon } from '../../assets/youtube.svg';
+import { ReactComponent as LogoIcon } from '../../assets/icons/youtube.svg';
 import { metaLinks, privateLinks, publicLinks } from '../../routes/links';
 
 const Sidebar = () => {

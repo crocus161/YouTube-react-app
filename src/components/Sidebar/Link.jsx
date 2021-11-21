@@ -7,7 +7,7 @@ const Link = ({link}) => {
 
     const resolved = useResolvedPath(path);
     const match = useMatch({ path: resolved.pathname, end: true });
-    console.log(match)
+
     return (
         <NavLink className={`${styles.navlink} ${match && styles.active}`} to={path}>
             <Icon className={styles.navlink__icon} />

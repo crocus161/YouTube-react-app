@@ -1,0 +1,116 @@
+@import '../../../variables.scss';
+
+.form{
+    flex-grow: 1;
+    max-width: 500px;
+    position: relative;
+
+    &::after{
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+
+        width: 0%;
+        height: 1px;
+        background: $accent;
+        transition: $fst-transition;
+    }
+
+    &__input{
+        width: 100%;
+        padding: 5px 60px 5px 5px;
+        color: $text;
+        background: transparent;
+        border-radius: 5px;
+        box-shadow: none;
+        border: none;
+        outline: none;
+    }
+
+    &__label{
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $light-text;
+        pointer-events: none;
+        transition: $fst-transition;
+    }
+
+    &__btn{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: $fst-transition;
+        animation: btnShow $fst-transition ease-in 1 alternate;
+        background: $light-text;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 15px;
+
+        &::after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 25px;
+            height: 40px;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        &:hover,
+        &:focus-visible{
+            background: lighten($accent, 20%);
+            filter: drop-shadow(0px 0px 5px $accent);
+        }
+    }
+
+    &__search{
+        line-height: 0;
+        right: 0px;
+        svg{
+            display: inline;
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    &__del{
+        right: 25px;
+        font-size: 12px;
+    }
+
+    &:focus-within{
+        &::after{
+            width: 100%;
+        }
+    }
+}
+
+
+.active{
+    &::after{
+        width: 100%;
+    }
+    .form__label{
+        left: 25px;
+        opacity: 0;
+    }
+}
+
+
+@keyframes btnShow {
+    from{
+        opacity: 0;
+        transform: translateY(-50%) scale(0);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(-50%) scale(1);
+    }
+}

@@ -1,0 +1,47 @@
+@import '../../../variables.scss';
+
+.icon__wrapper{
+    width: 35px;
+    height: 35px;
+    border: $thin;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 30px;
+    cursor: pointer;
+    transition: $fst-transition;
+    &:hover{
+        border-color: lighten($light-text, 30%);
+        .icon{
+            fill: lighten($light-text, 30%);
+        }
+        .icon.active{
+            fill: $accent;
+        }
+    }
+
+    &:focus-visible{
+        border-color: $accent;
+        .icon{
+            fill: lighten($light-text, 30%);
+        }
+        .icon.active{
+            fill: $accent;
+        }
+    }
+}
+
+.icon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 20px;
+    height: 20px;
+    fill: $light-text;
+    transition: $fst-transition;
+}
+
+.active.icon{
+    fill: $accent;
+}
