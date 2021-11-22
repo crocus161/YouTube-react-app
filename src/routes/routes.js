@@ -1,25 +1,24 @@
-import { EXPLORE, FEEDBACK, HISTORY, HOME, LATER, LIBRARY, LIKES, SETTINGS, SUBS, TRENDS } from "./consts";
+import ExploreContainer from '../containers/ExploreContainer';
+import TrendingContainer from '../containers/TrendingContainer';
+import { EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SETTINGS, SUBS, TRENDS } from './consts';
+
+const DefCom = () => <h1>HOME</h1>
 
 export const publicRoutes = [
     {
-        path: HOME,
-        id: HOME,
-        Component: '<h1>HOME</h1>'
-    },
-    {
         path: EXPLORE,
         id: EXPLORE,
-        Component: '<h1>EXPLORE</h1>'
+        Component: ExploreContainer
     },
     {
         path: TRENDS,
         id: TRENDS,
-        Component: '<h1>TRENDS</h1>'
+        Component: TrendingContainer
     },
     {
         path: SUBS,
         id: SUBS,
-        Component: '<h1>SUBS</h1>'
+        Component: DefCom
     }
 ];
 
@@ -27,22 +26,22 @@ export const privateRoutes = [
     {
         path: LIBRARY,
         id: LIBRARY,
-        Component: '<h1>LIBRARY</h1>'
+        Component: DefCom
     },
     {
         path: HISTORY,
         id: HISTORY,
-        Component: '<h1>HISTORY</h1>'
+        Component: DefCom
     },
     {
         path: LATER,
         id: LATER,
-        Component: '<h1>LATER</h1>'
+        Component: DefCom
     },
     {
         path: LIKES,
         id: LIKES,
-        Component: '<h1>LIKES</h1>'
+        Component: DefCom
     },
 ];
 
@@ -50,11 +49,11 @@ export const metaRoutes = [
     {
         path: FEEDBACK,
         id: FEEDBACK,
-        Component: '<h1>FEEDBACK</h1>'
+        Component: DefCom
     },
     {
         path: SETTINGS,
         id: SETTINGS,
-        Component: '<h1>SETTINGS</h1>'
+        Component: DefCom
     },
 ];

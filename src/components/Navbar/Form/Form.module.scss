@@ -66,7 +66,7 @@
         &:hover,
         &:focus-visible{
             background: lighten($accent, 20%);
-            filter: drop-shadow(0px 0px 5px $accent);
+            filter: drop-shadow($accent-shadow);
         }
     }
 

@@ -10,7 +10,10 @@
 }
 
 .wrapper{
+    max-width: calc(100vw - 270px);
     flex-grow: 1;
-    flex-basis: 75%;
-    min-height: 100vh;
+    height: 100vh; 
+    
+    display: flex;
+    flex-direction: column;
 }

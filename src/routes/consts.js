@@ -1,4 +1,3 @@
-export const HOME = '/home';
 
 export const EXPLORE = '/explore';
 export const TRENDS = '/trends';

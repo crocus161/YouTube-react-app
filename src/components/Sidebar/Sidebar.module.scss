@@ -59,6 +59,15 @@
         transition: $fst-transition;
     }
 
+    &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 100%;
+        height: 10px;
+    }
+
     &:hover::after{
         opacity: 1;
     }
@@ -91,6 +100,7 @@
     .navlink__icon{
         fill: $accent;
         stroke: $accent;
+        filter: drop-shadow($accent-shadow);
     }
 
     &::after{
