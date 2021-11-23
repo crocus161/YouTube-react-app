@@ -1,6 +1,6 @@
 import styles from './Listen.module.scss';
 import { ReactComponent as MicroIcon } from '../../../assets/icons/microphone.svg';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const mic = new SpeechRecognition();
@@ -9,8 +9,8 @@ mic.continuous = true;
 mic.interimResults = true;
 mic.lang = 'en-US';
 
-const Listen = ({ setSearchValue }) => {
-    console.log('')
+const Listen = React.memo(({ setSearchValue }) => {
+
     const [isListening, setIsListening] = useState(false);
 
     useEffect(() => {
@@ -48,6 +48,6 @@ const Listen = ({ setSearchValue }) => {
             <MicroIcon className={`${styles.icon} ${isListening ? styles.active : ''}`} />
         </button>
     );
-}
+})
 
 export default Listen;

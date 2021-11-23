@@ -1,5 +1,6 @@
 import styles from './VideoCard.module.scss';
 import numbersFormat from '../../utils/numbersFormat';
+import calcSpentDate from '../../utils/spentDateFormat';
 
 const VideoCard = ({data, vertical}) => {
     return (
@@ -11,17 +12,32 @@ const VideoCard = ({data, vertical}) => {
 
             <div className={styles.card__meta}>
 
-                <h3 className={styles.card__title}>
+                <h3 className={styles.card__title} title={data.snippet.title}>
                     {data.snippet.title}
                 </h3>
 
-                <p className={styles.card__info}>
-                    {data.snippet.channelTitle}&emsp;
-                    {numbersFormat(data.statistics.viewCount)} views&emsp;
-                    {data.snippet.publishedAt}
-                </p>
+                <div className={styles.card__info}>
 
-                <p className={styles.card__description}>{data.snippet.description}</p>
+                    <p className={styles.channel__title}>
+                        {data.snippet.channelTitle}
+                    </p>
+                    
+                    {
+                        !vertical &&
+                        <p className={styles.views__count}>
+                            {`${numbersFormat(data.statistics.viewCount)} views`}
+                        </p>
+                    }
+
+                    <p className={styles.publishing__date}>
+                        {calcSpentDate(data.snippet.publishedAt)}
+                    </p>
+
+                </div>
+
+                <p className={styles.card__description}>
+                    {data.snippet.description}
+                </p>
 
             </div>
         </div>

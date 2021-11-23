@@ -1,19 +1,19 @@
 import { instance } from './api';
 
 const params = {
-    part: 'snippet,contentDetails,statistics',
-    chart: 'mostPopular',
+    part: 'snippet',
 }
 
-const getTrendingData = (pageToken) => {
+const getSearchResultData = (searchQuery, pageToken) => {
     return instance
-    .get('videos', { 
+    .get('search', {
         params: {
             ...params,
+            q: searchQuery,
             pageToken
         }
     })
     .then(response => response.data);
 }
 
-export const trendingApi = { getTrendingData };
+export const searchApi = { getSearchResultData };

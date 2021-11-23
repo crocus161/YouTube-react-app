@@ -1,9 +1,12 @@
 import styles from './Form.module.scss'
 import { createRef } from 'react';
 import { ReactComponent as SearchIcon } from '../../../assets/icons/search.svg';
+import { useNavigate } from 'react-router';
+import { SEARCH } from '../../../routes/consts';
 
-const Form = ({searchValue, setSearchValue}) => {
+const Form = ({searchValue, setSearchValue, setSearchResult}) => {
 
+    const navigate = useNavigate();
     const searchInput = createRef();
 
     const clearSearchInput = e => {
@@ -16,8 +19,17 @@ const Form = ({searchValue, setSearchValue}) => {
         setSearchValue(e.target.value);
     }
 
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        if(!searchValue.trim()) return
+
+        setSearchResult(searchValue);
+        navigate(SEARCH);
+    }
+
     return (
-        <form className={`${styles.form} ${searchValue ? styles.active : ''}`}>
+        <form onSubmit={handleSubmit} className={`${styles.form} ${searchValue ? styles.active : ''}`}>
             
             <label className={styles.form__label} htmlFor='search-input'>Type to search</label>
 

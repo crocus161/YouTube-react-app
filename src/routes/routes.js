@@ -1,10 +1,16 @@
 import ExploreContainer from '../containers/ExploreContainer';
+import SearchContainer from '../containers/SearchContainer';
 import TrendingContainer from '../containers/TrendingContainer';
-import { EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SETTINGS, SUBS, TRENDS } from './consts';
+import { EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SEARCH, SETTINGS, SUBS, TRENDS } from './consts';
 
 const DefCom = () => <h1>HOME</h1>
 
 export const publicRoutes = [
+    {
+        path: SEARCH,
+        id: SEARCH,
+        Component: SearchContainer
+    },
     {
         path: EXPLORE,
         id: EXPLORE,

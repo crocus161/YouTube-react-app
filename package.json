@@ -43,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "react-infinite-scroll-component": "^6.1.0",
     "react-speech-recognition": "^3.9.0"
   }
 }

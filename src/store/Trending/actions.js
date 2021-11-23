@@ -10,9 +10,12 @@ export const setTrendingDataSuccess = (payload) => ({
 
 
 //THUNKS
-export const setTrendingData = () => (dispatch) => {
+export const setTrendingData = () => (dispatch, getState) => {
+
+    const pageToken = getState().trending.nextPageToken;
+
     trendingApi
-        .getTrendingData()
+        .getTrendingData(pageToken)
         .then(response => {
             dispatch(setTrendingDataSuccess(response));
         });

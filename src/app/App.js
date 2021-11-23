@@ -1,14 +1,14 @@
 import styles from './App.module.scss';
-import Navbar from '../components/Navbar/Navbar';
 import Sidebar from '../components/Sidebar/Sidebar';
 import RouteMap from '../components/RouteMap/RouteMap';
+import NavbarContainer from '../containers/NavbarContainer';
 
 const App = () => {
     return (
         <div className={styles.app}>
             <Sidebar />
             <div className={styles.wrapper}>
-                <Navbar />
+                <NavbarContainer />
                 <RouteMap />
             </div>
         </div>

@@ -8,11 +8,14 @@ const initialState = {
 };
 
 const trendingReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case SET_TRENDING_DATA:
             return {
                 ...state,
-                ...action.payload
+                items: [...state.items, ...action.payload.items],
+                nextPageToken: action.payload.nextPageToken,
+                pageInfo: action.payload.pageInfo,
+                etag: action.payload.etag
             }
         default:
             return state;
