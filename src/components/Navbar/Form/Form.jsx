@@ -24,7 +24,8 @@ const Form = ({searchValue, setSearchValue, setSearchResult}) => {
 
         if(!searchValue.trim()) return
 
-        setSearchResult(searchValue);
+        searchInput.current.blur();
+        setSearchResult(searchValue.trim());
         navigate(SEARCH);
     }
 

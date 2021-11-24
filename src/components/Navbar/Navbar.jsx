@@ -4,7 +4,7 @@ import Listen from './Listen/Listen';
 import styles from './Navbar.module.scss';
 import { ReactComponent as BellIcon } from '../../assets/icons/bell.svg';
 
-const Navbar = (props) => {
+const Navbar = ({setSearchResultData}) => {
 
     const [searchValue, setSearchValue] = useState('');
 
@@ -14,7 +14,7 @@ const Navbar = (props) => {
             <div className={styles.navbar__part}>
                 <Listen setSearchValue={setSearchValue} />
                 
-                <Form setSearchResult={props.setSearchResultData}
+                <Form setSearchResult={setSearchResultData}
                     searchValue={searchValue} 
                     setSearchValue={setSearchValue}/>
             </div>

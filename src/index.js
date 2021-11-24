@@ -14,6 +14,6 @@ window.addEventListener('load', () => {
                 <App />
             </Provider>
         </BrowserRouter>,
-        document.getElementById('root'));
+    document.getElementById('root'));
 });
 

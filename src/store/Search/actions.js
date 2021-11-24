@@ -4,6 +4,8 @@ import { setMoveUp } from '../CardsBox/actions';
 export const SET_MORE_SEARCH_RESULT_DATA = 'SEARCH/SET_MORE_SEARCH_RESULT_DATA';
 export const SET_SEARCH_RESULT_DATA = 'SEARCH/SET_SEARCH_RESULT_DATA';
 export const SET_SEARCH_QUERY = 'SEARCH/SET_SEARCH_QUERY';
+export const SET_LOADING = 'SEARCH/SET_LOADING';
+
 
 //ACTION CREATORS
 export const setMoreSearchResultDataSuccess = (payload) => ({
@@ -18,19 +20,24 @@ export const setSearchQuerySuccess = (payload) => ({
     type: SET_SEARCH_QUERY, payload
 });
 
+export const setLoadingSuccess = (payload) => ({
+    type: SET_LOADING, payload
+})
 
 //THUNKS
-export const setSearchResultData = (searchQuery) => (dispatch) => {
+export const setSearchResultData = (newSearchQuery) => (dispatch) => {
 
+    dispatch(setLoadingSuccess(true));
     //set scroll top of the box to 0 after new request
     dispatch(setMoveUp());
     //set still query for setMoreData thunk
-    dispatch(setSearchQuerySuccess(searchQuery));
+    dispatch(setSearchQuerySuccess(newSearchQuery));
 
     searchApi
-        .getSearchResultData(searchQuery, '')
+        .getSearchResultData(newSearchQuery, '')
         .then(response => {
             dispatch(setSearchResultDataSuccess(response));
+            dispatch(setLoadingSuccess(false));
         });
 }
 

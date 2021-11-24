@@ -1,16 +1,22 @@
 import styles from './CardsBox.module.scss';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import React, { useEffect } from 'react';
+import ScrollLoader from '../ScrollLoader/ScrollLoader';
+import EndScroll from '../EndScroll/EndScroll';
 
-const CardsBox = ({ title, children, listLength, fetchMoreData, moveUp, setMoveUp }) => {
+const CardsBox = ({ title, children, listLength, totalResults, fetchMoreData, moveUp, setMoveUp }) => {
 
     const scrollBlock = React.createRef();
 
     useEffect(() => {
-        if(moveUp) {
+        let cleanupFunction = false;
+
+        if (moveUp && !cleanupFunction) {
             scrollBlock.current.scrollTop = 0;
             setMoveUp();
         }
+
+        return () => cleanupFunction = true;
     });
 
     return (
@@ -21,22 +27,18 @@ const CardsBox = ({ title, children, listLength, fetchMoreData, moveUp, setMoveU
             </h1>
 
             <InfiniteScroll
-                initialScrollY={0}
                 dataLength={listLength}
-                hasMore={true}
+                hasMore={!totalResults ? true : totalResults > listLength}
                 next={fetchMoreData}
                 scrollableTarget="scrollableDiv"
-                loader={<h4>Loading...</h4>}
-                endMessage={
-                    <p style={{ textAlign: 'center' }}>
-                        <b>Yay! You have seen it all</b>
-                    </p>
-                }
+                loader={<ScrollLoader />}
+                endMessage={<EndScroll />}
                 className={styles.box__list}
-                >
+                style={{overflow: 'hidden'}}
+            >
                 {children}
             </InfiniteScroll>
-            
+
         </div>
     );
 }

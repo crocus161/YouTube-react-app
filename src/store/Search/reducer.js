@@ -1,11 +1,11 @@
-import { SET_MORE_SEARCH_RESULT_DATA, SET_SEARCH_QUERY, SET_SEARCH_RESULT_DATA } from './actions';
+import { SET_LOADING, SET_MORE_SEARCH_RESULT_DATA, SET_SEARCH_QUERY, SET_SEARCH_RESULT_DATA } from './actions';
 
 const initialState = {
     items: [],
     nextPageToken: '',
     pageInfo: null,
-    etag: '',
     searchQuery: '',
+    loading: false
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -16,7 +16,6 @@ const searchReducer = (state = initialState, action) => {
                 items: action.payload.items,
                 nextPageToken: action.payload.nextPageToken,
                 pageInfo: action.payload.pageInfo,
-                etag: action.payload.etag,
             }
         case SET_SEARCH_QUERY: 
             return {
@@ -29,7 +28,11 @@ const searchReducer = (state = initialState, action) => {
                 items: [...state.items, ...action.payload.items],
                 nextPageToken: action.payload.nextPageToken,
                 pageInfo: action.payload.pageInfo,
-                etag: action.payload.etag,
+            }
+        case SET_LOADING:
+            return {
+                ...state,
+                loading: action.payload
             }
         default:
             return state;

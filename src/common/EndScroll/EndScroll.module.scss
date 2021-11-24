@@ -1,0 +1,13 @@
+@import '../../variables.scss';
+
+.end{
+    width: 100%;
+    text-align: center;
+    &__title{
+        color: $light-text;
+        &::first-letter{
+            color: $accent;
+            text-shadow: $accent-shadow;
+        }
+    }
+}

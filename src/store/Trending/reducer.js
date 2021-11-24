@@ -1,10 +1,10 @@
-import { SET_TRENDING_DATA } from './actions';
+import { SET_LOADING, SET_TRENDING_DATA, SET_TRENDING_MORE_DATA } from './actions';
 
 const initialState = {
     items: [],
     nextPageToken: '',
     pageInfo: null,
-    etag: ''
+    loading: false
 };
 
 const trendingReducer = (state = initialState, action) => {
@@ -12,10 +12,21 @@ const trendingReducer = (state = initialState, action) => {
         case SET_TRENDING_DATA:
             return {
                 ...state,
+                items: action.payload.items,
+                nextPageToken: action.payload.nextPageToken,
+                pageInfo: action.payload.pageInfo,
+            }
+        case SET_TRENDING_MORE_DATA: 
+            return {
+                ...state,
                 items: [...state.items, ...action.payload.items],
                 nextPageToken: action.payload.nextPageToken,
                 pageInfo: action.payload.pageInfo,
-                etag: action.payload.etag
+            }
+        case SET_LOADING: 
+            return {
+                ...state,
+                loading: action.payload
             }
         default:
             return state;
