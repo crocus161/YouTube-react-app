@@ -4,6 +4,8 @@ import he from 'he';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import { cardsApi } from '../../api/cardApi';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const VideoCard = ({ data, vertical }) => {
 
@@ -43,9 +45,15 @@ const VideoCard = ({ data, vertical }) => {
         <div className={`${styles.card} ${vertical ? styles.vertical : styles.horizontal}`}>
 
             <div className={styles.card__img}>
-                <img src={snippet.thumbnails.medium.url} alt={snippet.title} />
+
+                <LazyLoadImage 
+                    src={snippet.thumbnails.medium.url} 
+                    alt={snippet.title} 
+                    effect='blur'
+                />
 
                 {duration ? <p className={styles.card__duration}>{formatDuration}</p> : null}
+                
             </div>
 
 
@@ -57,7 +65,14 @@ const VideoCard = ({ data, vertical }) => {
 
                 <div className={styles.card__info}>
 
-                    {channelIcon && <img className={styles.card__icon} src={channelIcon} alt={snippet.channelTitle} />}
+                    {channelIcon && 
+                        <LazyLoadImage 
+                            className={styles.card__icon} 
+                            src={channelIcon} 
+                            alt={snippet.channelTitle} 
+                            effect='blur'
+                        />
+                    }
 
                     {
                         !vertical &&

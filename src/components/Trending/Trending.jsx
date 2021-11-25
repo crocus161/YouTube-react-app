@@ -3,12 +3,12 @@ import VideoCard from '../../common/VideoCard/VideoCard';
 import CardsBoxContainer from '../../containers/CardsBoxContainer';
 import VideoCardsSkeleton from '../../common/Skeletons/VideoCardSkeleton/VideoCardsSkeleton';
 
-const Trending = ({ trendingList, setTrendingData, setTrendingMoreData, totalResults, loading }) => {
+const Trending = ({ trendingList, setTrendingData, setTrendingMoreData, totalResults, loading, isFull }) => {
 
     useEffect(() => {
         let cleanupFunction = false;
 
-        if(!cleanupFunction) {
+        if(!cleanupFunction && !isFull) {
             setTrendingData();
         }
 

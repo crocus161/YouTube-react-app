@@ -4,7 +4,8 @@ const initialState = {
     items: [],
     nextPageToken: '',
     pageInfo: null,
-    loading: false
+    loading: true,
+    isFull: false
 };
 
 const trendingReducer = (state = initialState, action) => {
@@ -15,6 +16,7 @@ const trendingReducer = (state = initialState, action) => {
                 items: action.payload.items,
                 nextPageToken: action.payload.nextPageToken,
                 pageInfo: action.payload.pageInfo,
+                isFull: true
             }
         case SET_TRENDING_MORE_DATA: 
             return {
