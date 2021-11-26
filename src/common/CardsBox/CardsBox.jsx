@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import ScrollLoader from '../ScrollLoader/ScrollLoader';
 import EndScroll from '../EndScroll/EndScroll';
 
-const CardsBox = ({ title, children, listLength, totalResults, fetchMoreData, moveUp, setMoveUp }) => {
+const CardsBox = ({ title, children, listLength, totalResults, fetchMoreData, moveUp, setMoveUp, small }) => {
 
     const scrollBlock = React.createRef();
 
@@ -20,7 +20,7 @@ const CardsBox = ({ title, children, listLength, totalResults, fetchMoreData, mo
     });
 
     return (
-        <div id="scrollableDiv" className={styles.box} ref={scrollBlock}>
+        <div id="scrollableDiv" className={`${styles.box} ${small ? styles.small : ''}`} ref={scrollBlock}>
 
             <h1 className={styles.box__title}>
                 {title}

@@ -3,6 +3,7 @@ export const EXPLORE = '/explore';
 export const TRENDS = '/trends';
 export const SEARCH = '/search';
 export const SUBS = '/subs';
+export const WATCH = '/watch';
 
 export const LIBRARY = '/library';
 export const HISTORY = '/history';

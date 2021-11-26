@@ -4,13 +4,15 @@ import exploreReducer from './Explore/reducer';
 import trendingReducer from './Trending/reducer';
 import searchReducer from './Search/reducer';
 import cardsBoxReducer from './CardsBox/reducer';
+import watchReducer from './Watch/reducer';
 
 
 const reducers = combineReducers({
     explore: exploreReducer,
     trending: trendingReducer,
     search: searchReducer,
-    cardsBox: cardsBoxReducer
+    cardsBox: cardsBoxReducer,
+    watch: watchReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

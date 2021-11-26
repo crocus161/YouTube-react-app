@@ -1,11 +1,17 @@
 import ExploreContainer from '../containers/ExploreContainer';
 import SearchContainer from '../containers/SearchContainer';
 import TrendingContainer from '../containers/TrendingContainer';
-import { EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SEARCH, SETTINGS, SUBS, TRENDS } from './consts';
+import WatchContainer from '../containers/WatchContainer';
+import { EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SEARCH, SETTINGS, SUBS, TRENDS, WATCH } from './consts';
 
 const DefCom = () => <h1>HOME</h1>
 
 export const publicRoutes = [
+    {
+        path: `${WATCH}/:videoId`,
+        id: WATCH,
+        Component: WatchContainer
+    },
     {
         path: SEARCH,
         id: SEARCH,

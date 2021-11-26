@@ -4,10 +4,31 @@
 .card{
     display: flex;
     color: $text;
+    position: relative;
+
+    &__overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: $thin-accent;
+        border-color: transparent;
+        cursor: pointer;
+        z-index: 5;
+        border-radius: 10px;
+        transition: $fst-transition;
+        outline: none;
+        &:focus-visible{
+            border-color: $accent;
+        }
+    }
+
     &__img{
         min-width: 300px;
         height: 175px;
         position: relative;
+        z-index: 3;
         span{
             width: 100%;
             height: 100%;
@@ -38,25 +59,69 @@
     }
 
     &__title{
+        width: 100%;
+        position: relative;
+        z-index: 10;
+        font-weight: 700;
+        color: $text;
         font-size: 18px;
+        @include textOverflow(2);
+        text-decoration: none;
+        transition: $fst-transition;
+        border: $thin-accent;
+        border-color: transparent;
+        border-radius: 3px;
+        outline: none;
+        &:hover{
+            color: lighten($accent, 20%);
+            text-shadow: $accent-shadow;
+        }
+        &:focus-visible{
+            border-color: $accent;
+        }
     }
     
     &__info{
+        margin: 5px 0px;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         flex-grow: 1;
         color: $light-text;
         gap: 10px;
+        span{
+            width: 35px;
+            height: 35px;
+        }
     }
 
     &__icon{
         width: 35px;
         height: 35px;
         border-radius: 50%;
+        position: relative;
+        z-index: 12;
+        border: $thin-accent;
+        border-color: transparent;
+        transition: $fst-transition;
+        span,
+        img{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        &:hover{
+            border-color: $accent;
+        }
+        &:focus-visible{
+            outline-color: $accent;
+            outline-style: solid;
+        }
     }
 
     &__description{
+        font-size: 14px;
         @include textOverflow(2);
     }
 }
@@ -94,11 +159,24 @@
         gap: 10px
     }
 
-    .card__title{
-        @include textOverflow(2);
-    }
-
     .channel__title{
         @include textOverflow(1);
+    }
+}
+
+.vertical.small{
+    width: 250px;
+    .card__img{
+        max-width: 250px;
+        min-width: 250px;
+        height: 130px;
+    }
+
+    .card__description{
+        display: none;
+    }
+
+    .card__title{ 
+        font-size: 15px;
     }
 }

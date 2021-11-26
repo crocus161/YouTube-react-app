@@ -1,48 +1,24 @@
 import styles from './VideoCard.module.scss';
-import numbersFormat from '../../utils/numbersFormat';
 import he from 'he';
-import { useEffect, useState } from 'react';
-import moment from 'moment';
-import { cardsApi } from '../../api/cardApi';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { NavLink } from 'react-router-dom';
+import { WATCH } from '../../routes/consts';
+import VideoCardInfo from './VideoCardInfo';
+import VideoCardDuration from './VideoCardDuration';
 
-const VideoCard = ({ data, vertical }) => {
+const VideoCard = ({ data, vertical, small }) => {
 
-    const { snippet } = data;
-
-    const [duration, setDuration] = useState(null);
-    const [channelIcon, setChannelIcon] = useState(null);
-
-    useEffect(() => {
-        let cleanupFunction = false;
-
-        if(!cleanupFunction) {
-
-            cardsApi
-                .getChannelIcon(snippet.channelId)
-                .then(icon => setChannelIcon(icon));
-    
-            if(data.contentDetails) {
-                setDuration(data.contentDetails.duration);
-                return () => cleanupFunction = true;
-            }
-    
-            const videoId = data.id?.videoId || data.contentDetails?.videoId || data.id;
-            cardsApi
-                .getVideoDuration(videoId)
-                .then(response => setDuration(response));
-
-        }
-            
-        return () => cleanupFunction = true;
-    }, []);
-        
-    const seconds = moment.duration(duration).asSeconds();
-    const formatDuration = moment.utc(seconds * 1000).format('mm:ss');
+    const { snippet, contentDetails, statistics } = data;
+    const videoId = data.id?.videoId || data.contentDetails?.videoId || data.id;
 
     return (
-        <div className={`${styles.card} ${vertical ? styles.vertical : styles.horizontal}`}>
+        <div className={`
+            ${styles.card} 
+            ${vertical ? styles.vertical : styles.horizontal}
+            ${small ? styles.small : ''}
+        `}>
+
+            <NavLink to={`${WATCH}/${videoId}`} className={styles.card__overlay} />
 
             <div className={styles.card__img}>
 
@@ -52,45 +28,30 @@ const VideoCard = ({ data, vertical }) => {
                     effect='blur'
                 />
 
-                {duration ? <p className={styles.card__duration}>{formatDuration}</p> : null}
-                
-            </div>
+                <VideoCardDuration 
+                    contentDetails={contentDetails}
+                    videoId={videoId}
+                />
 
+            </div>
 
             <div className={styles.card__meta}>
 
-                <h3 className={styles.card__title} title={snippet.title}>
+                <NavLink 
+                    to={`${WATCH}/${videoId}`} 
+                    className={styles.card__title} 
+                    title={snippet.title}
+                >
                     {he.decode(snippet.title)}
-                </h3>
+                </NavLink>
 
-                <div className={styles.card__info}>
-
-                    {channelIcon && 
-                        <LazyLoadImage 
-                            className={styles.card__icon} 
-                            src={channelIcon} 
-                            alt={snippet.channelTitle} 
-                            effect='blur'
-                        />
-                    }
-
-                    {
-                        !vertical &&
-                        <>
-                            <p className={styles.channel__title}>
-                                {he.decode(snippet.channelTitle)}
-                            </p>
-                            <p className={styles.views__count}>
-                                {`${numbersFormat(data.statistics.viewCount)} views`}
-                            </p>
-                        </>
-                    }
-
-                    <p className={styles.publishing__date}>
-                        {moment(snippet.publishedAt).fromNow()}
-                    </p>
-
-                </div>
+                <VideoCardInfo 
+                    vertical={vertical}
+                    channelTitle={snippet.channelTitle}
+                    channelId={snippet.channelId}
+                    published={snippet.publishedAt}
+                    viewCount={statistics?.viewCount}
+                />
 
                 <p className={styles.card__description}>
                     {he.decode(snippet.description)}

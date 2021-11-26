@@ -2,12 +2,12 @@ import styles from './VideoCardsSkeletons.module.scss';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-const VideoCardsSkeleton = ({ vertical }) => {
+const VideoCardsSkeleton = ({ vertical, small }) => {
 
     if (vertical) {
         return (
             <SkeletonTheme baseColor='#343a40' color='#343a40' highlightColor='#3c4147' borderRadius={10}>
-                <div className={styles.vertical__wrapper}>
+                <div className={`${styles.vertical__wrapper} ${small ? styles.small : ''}`}>
                     <Skeleton height={175}></Skeleton>
                     <Skeleton height={55}></Skeleton>
                     <div className={styles.vertical__line}>
@@ -24,7 +24,7 @@ const VideoCardsSkeleton = ({ vertical }) => {
 
     return (
         <SkeletonTheme baseColor='#343a40' color='#343a40' highlightColor='#3c4147'>
-            <div className={styles.horizontal__wrapper}>
+            <div className={`${styles.horizontal__wrapper} ${small ? styles.small : ''}`}>
                 <Skeleton width={300} height={180} borderRadius={10}></Skeleton>
                 <div className={styles.horizontal__meta}>
                     <Skeleton height={45}></Skeleton>
