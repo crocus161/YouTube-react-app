@@ -13,14 +13,14 @@ const VideoCardInfo = ({channelTitle, channelId, published, viewCount, vertical}
     useEffect(() => {
         let cleanupFunction = false;
 
-        if(!cleanupFunction) {
+        if(!cleanupFunction && channelId) {
             cardsApi
                 .getChannelIcon(channelId)
                 .then(icon => setChannelIcon(icon));
         }
             
         return () => cleanupFunction = true;
-    }, []);
+    }, [channelId]);
 
     return (
         <div className={styles.card__info}>

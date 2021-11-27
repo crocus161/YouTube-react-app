@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import Search from '../components/Search/Search';
+import errorHoc from '../hoc/errorHoc/errorHoc';
 import { setMoreSearchResultData } from '../store/Search/actions';
 
 const mapStateToProps = (state) => ({
@@ -8,4 +10,7 @@ const mapStateToProps = (state) => ({
     loading: state.search.loading
 })
 
-export default connect(mapStateToProps, {setMoreSearchResultData})(Search);
+export default compose(
+    connect(mapStateToProps, {setMoreSearchResultData}),
+    errorHoc
+)(Search);

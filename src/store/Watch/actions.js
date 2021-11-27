@@ -1,4 +1,5 @@
 import { watchApi } from '../../api/watchApi';
+import { setError } from '../Error/actions';
 
 export const SET_WATCH_DATA = 'WATCH/SET_WATCH_DATA';
 export const SET_RELATED_DATA = 'WATCH/SET_RELATED_DATA';
@@ -24,17 +25,26 @@ export const setWatchData = (videoId) => (dispatch) => {
         .getWatchVideoData(videoId)
         .then(response => {
             dispatch(setWatchDataSuccess(response))
+        })
+        .catch(error => {
+            dispatch(setError(true))
         });
 }
 
-export const setRelatedData = (videoId) => (dispatch, getState) => {
+export const setRelatedData = (id) => (dispatch, getState) => {
+
     dispatch(setRelatedLoadingSuccess(true));
-    const pageToken = getState().watch.relatedVideos.nextPageToken;
-    console.log(pageToken)
+
+    const pageToken = getState().watch.relatedVideos.nextPageToken,
+        videoId = getState().watch.watchVideo.id || id;
+
     watchApi
         .getRelatedVideoData(videoId, pageToken)
         .then(response => {
             dispatch(setRelatedDataSuccess(response));
             dispatch(setRelatedLoadingSuccess(false));
-        });
+        })
+        .catch(error => {
+            dispatch(setError(true))
+        })
 }

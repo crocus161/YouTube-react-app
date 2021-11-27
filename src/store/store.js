@@ -5,6 +5,7 @@ import trendingReducer from './Trending/reducer';
 import searchReducer from './Search/reducer';
 import cardsBoxReducer from './CardsBox/reducer';
 import watchReducer from './Watch/reducer';
+import errorReducer from './Error/reducer';
 
 
 const reducers = combineReducers({
@@ -12,7 +13,8 @@ const reducers = combineReducers({
     trending: trendingReducer,
     search: searchReducer,
     cardsBox: cardsBoxReducer,
-    watch: watchReducer
+    watch: watchReducer,
+    error: errorReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import Watch from '../components/Watch/Watch';
+import errorHoc from '../hoc/errorHoc/errorHoc';
 import { setWatchData, setRelatedData } from '../store/Watch/actions';
 
 
@@ -8,4 +10,7 @@ const mapStateToProps = (state) => ({
     relatedVideos: state.watch.relatedVideos
 });
 
-export default connect(mapStateToProps, { setWatchData, setRelatedData })(Watch);
+export default compose(
+    connect(mapStateToProps, { setWatchData, setRelatedData }),
+    // errorHoc
+)(Watch)

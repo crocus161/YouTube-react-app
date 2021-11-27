@@ -8,15 +8,15 @@ const VideoCardsSkeleton = ({ vertical, small }) => {
         return (
             <SkeletonTheme baseColor='#343a40' color='#343a40' highlightColor='#3c4147' borderRadius={10}>
                 <div className={`${styles.vertical__wrapper} ${small ? styles.small : ''}`}>
-                    <Skeleton height={175}></Skeleton>
-                    <Skeleton height={55}></Skeleton>
+                    <Skeleton height={small ? 120 : 175}></Skeleton>
+                    <Skeleton height={small ? 48 : 55}></Skeleton>
                     <div className={styles.vertical__line}>
                         <Skeleton width={35} height={35} circle></Skeleton>
                         <div className={styles.vertical__time}>
                             <Skeleton height={35}></Skeleton>
                         </div>
                     </div>
-                    <Skeleton height={25}></Skeleton>
+                    {!small && <Skeleton height={25}></Skeleton>}
                 </div>
             </SkeletonTheme>
         )

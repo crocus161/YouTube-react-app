@@ -9,7 +9,7 @@ const VideoCardDuration = ({contentDetails, videoId}) => {
     useEffect(() => {
         let cleanupFunction = false;
 
-        if(!cleanupFunction) {
+        if(!cleanupFunction && videoId) {
     
             if(contentDetails) {
                 setDuration(contentDetails.duration);
@@ -23,7 +23,7 @@ const VideoCardDuration = ({contentDetails, videoId}) => {
         }
             
         return () => cleanupFunction = true;
-    }, []);
+    }, [videoId, contentDetails]);
 
 
     const seconds = moment.duration(duration).asSeconds();

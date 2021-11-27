@@ -1,43 +1,16 @@
-import { useEffect } from 'react';
-import { useMatch } from 'react-router';
-import EmbedVideo from '../../common/EmbedVideo/EmbedVideo';
+import WatchCurrentContainer from '../../containers/WatchCurrentContainer';
+import WatchRelatedContainer from '../../containers/WatchRelatedContainer';
 import { WATCH } from '../../routes/consts';
-import RelatedVideos from './RelatedVideos/RelatedVideos';
 import styles from './Watch.module.scss';
+import { useMatch } from 'react-router';
 
-const Watch = ({ setWatchData, setRelatedData, watchVideo, relatedVideos }) => {
+const Watch = () => {
     const {params: { videoId }} = useMatch(`${WATCH}/:videoId`);
-    const {contentDetails, statistics, snippet, id} = watchVideo;
     
-
-    useEffect(() => {
-        let cleanupFunction = false;
-
-        if(!cleanupFunction) {
-            setWatchData(videoId);
-        }
-
-        return () => cleanupFunction = true;
-    }, [videoId]);
-
     return (
         <div className={styles.watch}>
-
-            <div className={styles.watch__current}>
-
-                <EmbedVideo 
-                    title={snippet?.title} 
-                    id={id}
-                />
-
-            </div>
-
-            <RelatedVideos
-                setRelatedData={setRelatedData}
-                relatedVideos={relatedVideos} 
-                videoId={id}
-            />
-
+            <WatchCurrentContainer videoId={videoId} />
+            <WatchRelatedContainer videoId={videoId} />
         </div>
     );
 }

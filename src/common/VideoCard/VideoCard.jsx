@@ -11,6 +11,8 @@ const VideoCard = ({ data, vertical, small }) => {
     const { snippet, contentDetails, statistics } = data;
     const videoId = data.id?.videoId || data.contentDetails?.videoId || data.id;
 
+    // console.log('render');
+    
     return (
         <div className={`
             ${styles.card} 
@@ -23,8 +25,8 @@ const VideoCard = ({ data, vertical, small }) => {
             <div className={styles.card__img}>
 
                 <LazyLoadImage 
-                    src={snippet.thumbnails.medium.url} 
-                    alt={snippet.title} 
+                    src={snippet?.thumbnails.medium.url} 
+                    alt={snippet?.title} 
                     effect='blur'
                 />
 
@@ -40,21 +42,21 @@ const VideoCard = ({ data, vertical, small }) => {
                 <NavLink 
                     to={`${WATCH}/${videoId}`} 
                     className={styles.card__title} 
-                    title={snippet.title}
+                    title={snippet?.title}
                 >
-                    {he.decode(snippet.title)}
+                    {snippet?.title ? he.decode(snippet?.title) : null}
                 </NavLink>
 
                 <VideoCardInfo 
                     vertical={vertical}
-                    channelTitle={snippet.channelTitle}
-                    channelId={snippet.channelId}
-                    published={snippet.publishedAt}
+                    channelTitle={snippet?.channelTitle}
+                    channelId={snippet?.channelId}
+                    published={snippet?.publishedAt}
                     viewCount={statistics?.viewCount}
                 />
 
                 <p className={styles.card__description}>
-                    {he.decode(snippet.description)}
+                    {snippet?.description ? he.decode(snippet?.description) : null}
                 </p>
 
             </div>

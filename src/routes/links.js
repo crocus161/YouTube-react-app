@@ -17,7 +17,7 @@ export const publicLinks = [
         id: EXPLORE
     },
     {
-        title: 'Tranding',
+        title: 'Trending',
         Icon: TrendingIcon,
         path: TRENDS,
         id: TRENDS

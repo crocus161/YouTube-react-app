@@ -11,11 +11,12 @@ const getWatchVideoData = (videoId) => {
     .then(response => response.data.items[0]);
 }
 
-const getRelatedVideoData = (videoId, pageToken) => {
+const getRelatedVideoData = (videoId='', pageToken='') => {
     const params = {
         part: 'snippet',
         relatedToVideoId: videoId,
-        pageToken: pageToken
+        type: 'video',
+        pageToken
     }
 
     return instance

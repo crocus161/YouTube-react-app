@@ -1,5 +1,6 @@
 import { searchApi } from '../../api/searchApi';
 import { setMoveUp } from '../CardsBox/actions';
+import { setError } from '../Error/actions';
 
 export const SET_MORE_SEARCH_RESULT_DATA = 'SEARCH/SET_MORE_SEARCH_RESULT_DATA';
 export const SET_SEARCH_RESULT_DATA = 'SEARCH/SET_SEARCH_RESULT_DATA';
@@ -38,6 +39,9 @@ export const setSearchResultData = (newSearchQuery) => (dispatch) => {
         .then(response => {
             dispatch(setSearchResultDataSuccess(response));
             dispatch(setLoadingSuccess(false));
+        })
+        .catch(error => {
+            dispatch(setError(true))
         });
 }
 
@@ -50,6 +54,9 @@ export const setMoreSearchResultData = () => (dispatch, getState) => {
         .getSearchResultData(searchQuery, pageToken)
         .then(response => {
             dispatch(setMoreSearchResultDataSuccess(response));
+        })
+        .catch(error => {
+            dispatch(setError(true))
         });
 }
 

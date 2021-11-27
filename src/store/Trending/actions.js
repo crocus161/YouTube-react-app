@@ -1,4 +1,5 @@
 import { trendingApi } from '../../api/trendingApi';
+import { setError } from '../Error/actions';
 
 export const SET_TRENDING_MORE_DATA = 'TRENDING/SET_TRENDING_MORE_DATA';
 export const SET_TRENDING_DATA = 'TRENDING/SET_TRENDING_DATA';
@@ -28,6 +29,9 @@ export const setTrendingData = () => (dispatch) => {
         .then(response => {
             dispatch(setTrendingDataSuccess(response));
             dispatch(setLoadingSuccess(false));
+        })
+        .catch(error => {
+            dispatch(setError(true))
         });
 }
 
@@ -38,6 +42,9 @@ export const setTrendingMoreData = () => (dispatch, getState) => {
         .getTrendingData(pageToken)
         .then(response => {
             dispatch(setTrendingMoreDataSuccess(response));
+        })
+        .catch(error => {
+            dispatch(setError(true))
         });
 }
 

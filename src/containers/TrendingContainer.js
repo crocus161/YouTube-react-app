@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import Trending from '../components/Trending/Trending';
+import errorHoc from '../hoc/errorHoc/errorHoc';
 import { setTrendingData, setTrendingMoreData } from '../store/Trending/actions';
 
 const mapStateToProps = (state) => ({
@@ -9,4 +11,7 @@ const mapStateToProps = (state) => ({
     isFull: state.trending.isFull
 });
 
-export default connect(mapStateToProps, { setTrendingData, setTrendingMoreData })(Trending);
+export default compose(
+    connect(mapStateToProps, { setTrendingData, setTrendingMoreData }),
+    errorHoc
+)(Trending)
