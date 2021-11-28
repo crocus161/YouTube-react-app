@@ -1,5 +1,8 @@
 
 const numbersFormat = num => {
+
+    num = Number(num);
+
     let flag = 0;
     while (num > 1000) {
         num /= 1000;

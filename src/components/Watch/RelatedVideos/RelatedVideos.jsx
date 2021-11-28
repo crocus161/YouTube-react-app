@@ -4,7 +4,7 @@ import CardsBoxContainer from '../../../containers/CardsBoxContainer';
 import VideoCardsSkeleton from '../../../common/Skeletons/VideoCardSkeleton/VideoCardsSkeleton';
 import VideoCard from '../../../common/VideoCard/VideoCard';
 
-const RelatedVideos = ({ setRelatedData, relatedVideos, videoId, setMoveUp }) => {
+const RelatedVideos = ({ setMoreRelatedData, setRelatedData, relatedVideos, videoId, setMoveUp }) => {
 
     const {items, totalResults, loading} = relatedVideos;
 
@@ -27,7 +27,7 @@ const RelatedVideos = ({ setRelatedData, relatedVideos, videoId, setMoveUp }) =>
                 title='Related videos'
                 listLength={items.length}
                 totalResults={totalResults}
-                fetchMoreData={setRelatedData}
+                fetchMoreData={setMoreRelatedData}
                 small={true}
             >
                 {loading

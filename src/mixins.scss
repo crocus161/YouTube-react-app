@@ -1,7 +1,20 @@
+@import './variables.scss';
+
 @mixin textOverflow($line-clamp: 1) {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: $line-clamp;
     -webkit-box-orient: vertical;
+}
+
+@mixin accentText {
+    color: $accent;
+    text-shadow: $accent-shadow;
+}
+
+@mixin letterAccent {
+    &::first-letter{
+        @include accentText;
+    }
 }

@@ -27,7 +27,9 @@ const VideoCardDuration = ({contentDetails, videoId}) => {
 
 
     const seconds = moment.duration(duration).asSeconds();
-    const formatDuration = moment.utc(seconds * 1000).format('mm:ss');
+    const formatDuration = moment.utc(seconds * 1000)
+                                .format('HH:mm:ss')
+                                .replace(/00:/, '');
 
     return (
         <>

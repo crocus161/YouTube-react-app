@@ -1,3 +1,14 @@
+@import '../../../mixins.scss';
+@import '../../../variables.scss';
+
 .current{
     flex-grow: 1;
+    color: $text;
+
+    &__title{
+        font-size: 18px;
+        margin: 5px 0px 10px 0px;
+        @include letterAccent;
+    }
 }
+

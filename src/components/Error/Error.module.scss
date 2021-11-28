@@ -1,0 +1,27 @@
+@import '../../mixins.scss';
+@import '../../variables.scss';
+
+.error{
+    padding: 50px 10px;
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hgroup{
+    text-align: center;
+    color: $text;
+    &__line{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+    h2, p{
+        @include letterAccent;
+    }
+}

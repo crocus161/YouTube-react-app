@@ -1,0 +1,28 @@
+@import '../../../../variables.scss';
+
+.statistics{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: $thin;
+
+    &__reaction{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        p{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            svg{
+                width: 25px;
+                height: 25px;
+                fill: $accent;
+                stroke: $accent;
+            }
+        }
+    }
+}

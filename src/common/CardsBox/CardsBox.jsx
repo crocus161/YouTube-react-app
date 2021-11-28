@@ -32,7 +32,7 @@ const CardsBox = ({ title, children, listLength, totalResults, fetchMoreData, mo
                 next={fetchMoreData}
                 scrollableTarget="scrollableDiv"
                 loader={<ScrollLoader />}
-                endMessage={<EndScroll />}
+                endMessage={<EndScroll small={small}/>}
                 className={styles.box__list}
                 style={{overflow: 'hidden'}}
             >

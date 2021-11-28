@@ -1,3 +1,4 @@
+@import '../../mixins.scss';
 @import '../../variables.scss';
 
 .box{
@@ -18,10 +19,7 @@
 
     &__title{
         color: $text;
-        &::first-letter{
-            color: $accent;
-            text-shadow: $accent-shadow;
-        }
+        @include letterAccent;
     }
 }
 

@@ -1,3 +1,4 @@
+@import '../../mixins.scss';
 @import '../../variables.scss';
 
 .end{
@@ -5,9 +6,12 @@
     text-align: center;
     &__title{
         color: $light-text;
-        &::first-letter{
-            color: $accent;
-            text-shadow: $accent-shadow;
-        }
+        @include letterAccent;
+    }
+}
+
+.small{
+    .end__title{
+        font-size: 16px;
     }
 }
