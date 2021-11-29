@@ -1,12 +1,15 @@
-import styles from './CurrentVideo.module.scss';
-import EmbedVideo from '../../../common/EmbedVideo/EmbedVideo';
 import { useEffect } from 'react';
+import styles from './CurrentVideo.module.scss';
 import Statistics from './Statistics/Statistics';
 import Description from './Description/Description';
+import EmbedVideo from '../../../common/EmbedVideo/EmbedVideo';
+import CommentsContainer from '../../../containers/CommentsContainer';
+import CurrentWatchSkeleton from '../../../common/Skeletons/CurrentWatchSkeleton/CurrentWatchSkeleton';
 
 
 const CurrentVideo = ({ videoId, watchVideo, setWatchData }) => {
-    const { contentDetails, statistics, snippet } = watchVideo;
+    const { contentDetails, statistics, snippet, loading } = watchVideo;
+    console.log(loading);
 
     useEffect(() => {
         let cleanupFunction = false;
@@ -17,6 +20,10 @@ const CurrentVideo = ({ videoId, watchVideo, setWatchData }) => {
 
         return () => cleanupFunction = true;
     }, [videoId, setWatchData]);
+
+    if(loading) {
+        return <CurrentWatchSkeleton />
+    }
 
     return (
         <div className={styles.current}>
@@ -40,6 +47,8 @@ const CurrentVideo = ({ videoId, watchVideo, setWatchData }) => {
                 />
 
             </div>
+
+            <CommentsContainer videoId={videoId} />
         </div>
     )
 }

@@ -1,10 +1,11 @@
-import './index.css';
-import App from './app/App';
+import './index.scss';
 import React from 'react';
+import App from './app/App';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import store from './store/store';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import 'react-loading-skeleton/dist/skeleton.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 

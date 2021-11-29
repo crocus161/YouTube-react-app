@@ -13,9 +13,7 @@ const trendingReducer = (state = initialState, action) => {
         case SET_TRENDING_DATA:
             return {
                 ...state,
-                items: action.payload.items,
-                nextPageToken: action.payload.nextPageToken,
-                pageInfo: action.payload.pageInfo,
+                ...action.payload,
                 isFull: true
             }
         case SET_TRENDING_MORE_DATA: 

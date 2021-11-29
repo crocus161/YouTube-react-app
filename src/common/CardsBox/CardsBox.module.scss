@@ -8,15 +8,6 @@
     flex-grow: 1;
     padding: 20px;
 
-    &__list{
-        margin: 20px 0px;
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: 50px;
-    }
-
     &__title{
         color: $text;
         @include letterAccent;
@@ -26,9 +17,6 @@
 .box.small{
     margin: 0;
     padding: 0px 10px;
-    .box__list{
-        gap: 20px;
-    }
     .box__title{
         font-size: 20px;
     }

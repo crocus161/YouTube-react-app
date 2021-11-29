@@ -1,6 +1,6 @@
 import styles from './VideoCard.module.scss';
 import numbersFormat from '../../utils/numbersFormat';
-import he from 'he';
+import { decode } from '../../utils/stringFormat';
 import moment from 'moment';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { NavLink } from 'react-router-dom';
@@ -39,7 +39,7 @@ const VideoCardInfo = ({channelTitle, channelId, published, viewCount, vertical}
             {!vertical &&
                 <>
                     <p className={styles.channel__title}>
-                        {he.decode(channelTitle)}
+                        {decode(channelTitle)}
                     </p>
 
                     <p className={styles.views__count}>

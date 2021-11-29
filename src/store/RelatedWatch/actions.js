@@ -1,16 +1,11 @@
 import { watchApi } from '../../api/watchApi';
 import { setError } from '../Error/actions';
 
-export const SET_WATCH_DATA = 'WATCH/SET_WATCH_DATA';
 export const SET_RELATED_DATA = 'WATCH/SET_RELATED_DATA';
 export const SET_MORE_RELATED_DATA = 'WATCH/SET_MORE_RELATED_DATA';
 export const SET_RELATED_LOADING = 'WATCH/SET_RELATED_LOADING';
 
 //ACTION CREATORS
-const setWatchDataSuccess = (payload) => ({
-    type: SET_WATCH_DATA, payload
-})
-
 const setRelatedDataSuccess = (payload) => ({
     type: SET_RELATED_DATA, payload
 })
@@ -24,18 +19,6 @@ const setRelatedLoadingSuccess = (payload) => ({
 })
 
 //THUNKS
-export const setWatchData = (videoId) => (dispatch) => {
-
-    watchApi
-        .getWatchVideoData(videoId)
-        .then(response => {
-            dispatch(setWatchDataSuccess(response))
-        })
-        .catch(error => {
-            dispatch(setError(true))
-        });
-}
-
 export const setRelatedData = (videoId) => (dispatch) => {
     dispatch(setRelatedLoadingSuccess(true));
     
@@ -46,14 +29,14 @@ export const setRelatedData = (videoId) => (dispatch) => {
             dispatch(setRelatedLoadingSuccess(false));
         })
         .catch(error => {
-            dispatch(setError(true))
-        })
+            dispatch(setError(true));
+        });
 }
 
 export const setMoreRelatedData = () => (dispatch, getState) => {
 
-    const pageToken = getState().watch.relatedVideos.nextPageToken,
-        videoId = getState().watch.watchVideo.id;
+    const pageToken = getState().relatedWatch.nextPageToken,
+        videoId = getState().currentWatch.id;
 
     watchApi
         .getRelatedVideoData(videoId, pageToken)
@@ -61,6 +44,6 @@ export const setMoreRelatedData = () => (dispatch, getState) => {
             dispatch(setMoreRelatedDataSuccess(response));
         })
         .catch(error => {
-            dispatch(setError(true))
-        })
+            dispatch(setError(true));
+        });
 }

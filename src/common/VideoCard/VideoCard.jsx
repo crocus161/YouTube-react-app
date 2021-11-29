@@ -1,17 +1,15 @@
 import styles from './VideoCard.module.scss';
-import he from 'he';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { NavLink } from 'react-router-dom';
 import { WATCH } from '../../routes/consts';
 import VideoCardInfo from './VideoCardInfo';
 import VideoCardDuration from './VideoCardDuration';
+import { fullStringFormat, decode } from '../../utils/stringFormat.js'
 
 const VideoCard = ({ data, vertical, small }) => {
 
     const { snippet, contentDetails, statistics } = data;
     const videoId = data.id?.videoId || data.contentDetails?.videoId || data.id;
-
-    // console.log('render');
     
     return (
         <div className={`
@@ -44,7 +42,7 @@ const VideoCard = ({ data, vertical, small }) => {
                     className={styles.card__title} 
                     title={snippet?.title}
                 >
-                    {snippet?.title ? he.decode(snippet?.title) : null}
+                    {snippet?.title ? decode(snippet?.title) : null}
                 </NavLink>
 
                 <VideoCardInfo 
@@ -56,7 +54,7 @@ const VideoCard = ({ data, vertical, small }) => {
                 />
 
                 <p className={styles.card__description}>
-                    {snippet?.description ? he.decode(snippet?.description) : null}
+                    {snippet?.description ? fullStringFormat(snippet?.description) : null}
                 </p>
 
             </div>

@@ -4,8 +4,10 @@ import exploreReducer from './Explore/reducer';
 import trendingReducer from './Trending/reducer';
 import searchReducer from './Search/reducer';
 import cardsBoxReducer from './CardsBox/reducer';
-import watchReducer from './Watch/reducer';
 import errorReducer from './Error/reducer';
+import currentWatchReducer from './CurrentWatch/reducer';
+import relatedWatchReducer from './RelatedWatch/reducer';
+import commentsWatchReducer from './CommentsWatch/reducer';
 
 
 const reducers = combineReducers({
@@ -13,8 +15,10 @@ const reducers = combineReducers({
     trending: trendingReducer,
     search: searchReducer,
     cardsBox: cardsBoxReducer,
-    watch: watchReducer,
-    error: errorReducer
+    error: errorReducer,
+    currentWatch: currentWatchReducer,
+    relatedWatch: relatedWatchReducer,
+    commentsWatch: commentsWatchReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,8 +1,6 @@
-import styles from './CardsBox.module.scss';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import React, { useEffect } from 'react';
-import ScrollLoader from '../ScrollLoader/ScrollLoader';
-import EndScroll from '../EndScroll/EndScroll';
+import styles from './CardsBox.module.scss';
+import InfiniteBox from '../InfiniteBox/InfiniteBox';
 
 const CardsBox = ({ title, children, listLength, totalResults, fetchMoreData, moveUp, setMoveUp, small }) => {
 
@@ -26,19 +24,14 @@ const CardsBox = ({ title, children, listLength, totalResults, fetchMoreData, mo
                 {title}
             </h1>
 
-            <InfiniteScroll
-                dataLength={listLength}
-                hasMore={!totalResults ? true : totalResults > listLength}
-                next={fetchMoreData}
+            <InfiniteBox
+                listLength={listLength}
+                totalResults={totalResults}
+                fetchMoreData={fetchMoreData}
                 scrollableTarget="scrollableDiv"
-                loader={<ScrollLoader />}
-                endMessage={<EndScroll small={small}/>}
-                className={styles.box__list}
-                style={{overflow: 'hidden'}}
             >
                 {children}
-            </InfiniteScroll>
-
+            </InfiniteBox>
         </div>
     );
 }

@@ -1,6 +1,6 @@
-import styles from './Description.module.scss';
-import he from 'he';
 import { useState } from 'react';
+import styles from './Description.module.scss';
+import { fullStringFormat } from '../../../../utils/stringFormat';
 
 const Description = ({description}) => {
     const [showMore, setShowMore] = useState(false);
@@ -12,7 +12,7 @@ const Description = ({description}) => {
     return (
         <div className={`${styles.description} ${showMore ? styles.active__description : ''}`}>
             <p>
-                {description ? he.decode(description) : null}
+                {description ? fullStringFormat(description) : null}
             </p>
 
             <button onClick={handleShowMore}>

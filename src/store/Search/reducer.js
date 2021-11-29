@@ -13,9 +13,7 @@ const searchReducer = (state = initialState, action) => {
         case SET_SEARCH_RESULT_DATA:
             return {
                 ...state,
-                items: action.payload.items,
-                nextPageToken: action.payload.nextPageToken,
-                pageInfo: action.payload.pageInfo,
+                ...action.payload
             }
         case SET_SEARCH_QUERY: 
             return {

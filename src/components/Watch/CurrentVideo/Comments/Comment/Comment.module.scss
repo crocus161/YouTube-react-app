@@ -1,0 +1,39 @@
+@import '../../../../../variables.scss';
+
+.comment{
+    display: flex;
+    gap: 15px;
+}
+
+.ava{
+    max-width: 50px;
+    min-width: 50px;
+    max-height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    span, img{
+        max-width: 100%;
+        min-width: 50px;
+        max-height: 100%;
+        object-fit: cover;
+    }
+}
+
+.meta{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: $light-text;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.author__name{
+    background-color: $light-text;
+    border-radius: 25px;
+    padding: 0px 5px;
+    color: $text;
+    font-weight: 400;
+    font-size: 14px;
+
+}

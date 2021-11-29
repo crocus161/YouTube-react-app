@@ -1,6 +1,5 @@
 import styles from './VideoCardsSkeletons.module.scss';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 
 const VideoCardsSkeleton = ({ vertical, small }) => {
 

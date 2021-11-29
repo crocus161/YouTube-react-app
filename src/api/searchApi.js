@@ -1,18 +1,13 @@
 import { instance } from './api';
 
-const params = {
-    part: 'snippet',
-}
+const getSearchResultData = (q, pageToken) => {
 
-const getSearchResultData = (searchQuery, pageToken) => {
+    const params = {
+        part: 'snippet', q, pageToken
+    }
+
     return instance
-    .get('search', {
-        params: {
-            ...params,
-            q: searchQuery,
-            pageToken
-        }
-    })
+    .get('search', { params })
     .then(response => response.data);
 }
 

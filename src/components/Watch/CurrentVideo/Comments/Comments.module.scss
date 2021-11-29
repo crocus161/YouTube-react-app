@@ -1,0 +1,6 @@
+@import '../../../../mixins.scss';
+
+.title{
+    @include letterAccent;
+    margin-bottom: 20px;
+}
