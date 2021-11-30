@@ -1,13 +1,19 @@
+import Channel from '../components/Channel/Channel';
 import Error from '../components/Error/Error';
 import Watch from '../components/Watch/Watch';
 import ExploreContainer from '../containers/ExploreContainer';
 import SearchContainer from '../containers/SearchContainer';
 import TrendingContainer from '../containers/TrendingContainer';
-import { ERROR, EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SEARCH, SETTINGS, SUBS, TRENDS, WATCH } from './consts';
+import { CHANNEL, ERROR, EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SEARCH, SETTINGS, SUBS, TRENDS, WATCH } from './consts';
 
 const DefCom = () => <h1>Default component</h1>
 
 export const publicRoutes = [
+    {
+        path: `${CHANNEL}/:channelId`,
+        id: CHANNEL,
+        Component: Channel
+    },
     {
         path: ERROR,
         id: ERROR,

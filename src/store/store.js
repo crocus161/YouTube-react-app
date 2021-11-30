@@ -8,6 +8,8 @@ import errorReducer from './Error/reducer';
 import currentWatchReducer from './CurrentWatch/reducer';
 import relatedWatchReducer from './RelatedWatch/reducer';
 import commentsWatchReducer from './CommentsWatch/reducer';
+import channelDataReducer from './ChannelData/reducer';
+import channelVideosReducer from './ChannelVideos/reducer';
 
 
 const reducers = combineReducers({
@@ -18,7 +20,9 @@ const reducers = combineReducers({
     error: errorReducer,
     currentWatch: currentWatchReducer,
     relatedWatch: relatedWatchReducer,
-    commentsWatch: commentsWatchReducer
+    commentsWatch: commentsWatchReducer,
+    channelData: channelDataReducer,
+    channelVideos: channelVideosReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,6 +1,7 @@
 @import '../../../../../variables.scss';
 
 .comment{
+    width: 100%;
     display: flex;
     gap: 15px;
 }
@@ -36,4 +37,17 @@
     font-weight: 400;
     font-size: 14px;
 
+}
+
+.likes{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: $text;
+    &__icon{
+        width: 15px;
+        height: 15px;
+        stroke: $accent;
+        fill: $accent;
+    }
 }

@@ -6,19 +6,4 @@
     margin-bottom: 10px;
     padding-bottom: 10px;
     border-bottom: $thin;
-    
-    p{
-        @include textOverflow(2);
-    }
-
-    button{
-        @include accentText;
-    }
-}
-
-.active__description{
-    p{
-        height: 100%;
-        @include textOverflow(unset);
-    }
 }

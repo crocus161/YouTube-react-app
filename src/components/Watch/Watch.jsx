@@ -8,7 +8,7 @@ const Watch = () => {
     const {params: { videoId }} = useMatch(`${WATCH}/:videoId`);
     
     return (
-        <div className={styles.watch}>
+        <div className={styles.watch} id='watch'>
             <WatchCurrentContainer videoId={videoId} />
             <WatchRelatedContainer videoId={videoId} />
         </div>

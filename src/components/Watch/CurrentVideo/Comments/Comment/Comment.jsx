@@ -2,6 +2,8 @@ import moment from 'moment';
 import styles from './Comment.module.scss';
 import { parseHtml } from '../../../../../utils/stringFormat';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Details from '../../../../../common/Details/Details';
+import { ReactComponent as LikeHeartIcon } from '../../../../../assets/icons/likes.svg';
 
 const Comment = ({ data, replies }) => {
 
@@ -30,19 +32,24 @@ const Comment = ({ data, replies }) => {
                             {moment(snippet?.publishedAt).fromNow()}
                         </span>
 
-                        {
-                            !isUpdate 
-                                ? <span className="edit__mark">(edited)</span> 
-                                : null
-                        }
+                        {isUpdate && <span className="edit__mark"> (edited)</span> }
                     </p>
                 </div>
 
-                <div className="text">
-                    <p>{parseHtml(snippet?.textDisplay)}</p>
-                </div>
+                <Details>
+                    {parseHtml(snippet?.textDisplay)}
+                </Details>
 
-                <div className="statistics"></div>
+                {snippet?.likeCount 
+                    ? (
+                        <div className={styles.likes}>
+                            <LikeHeartIcon className={styles.likes__icon}/>
+                            <p className={styles.likes__count}>{snippet?.likeCount}</p> 
+                        </div>
+                    )
+                    : null
+                }
+
             </div>
         </div>
     );

@@ -1,9 +1,9 @@
 import { watchApi } from '../../api/watchApi';
 import { setError } from '../Error/actions';
 
-export const SET_RELATED_DATA = 'WATCH/SET_RELATED_DATA';
-export const SET_MORE_RELATED_DATA = 'WATCH/SET_MORE_RELATED_DATA';
-export const SET_RELATED_LOADING = 'WATCH/SET_RELATED_LOADING';
+export const SET_RELATED_DATA = 'RELATED_WATCH/SET_RELATED_DATA';
+export const SET_MORE_RELATED_DATA = 'RELATED_WATCH/SET_MORE_RELATED_DATA';
+export const SET_RELATED_LOADING = 'RELATED_WATCH/SET_RELATED_LOADING';
 
 //ACTION CREATORS
 const setRelatedDataSuccess = (payload) => ({

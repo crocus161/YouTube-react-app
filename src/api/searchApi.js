@@ -1,6 +1,6 @@
 import { instance } from './api';
 
-const getSearchResultData = (q, pageToken) => {
+const getSearchResultData = (q='', pageToken='') => {
 
     const params = {
         part: 'snippet', q, pageToken

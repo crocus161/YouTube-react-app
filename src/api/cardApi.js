@@ -1,7 +1,7 @@
 import { instance } from './api';
 
 
-const getChannelIcon = async (id) => {
+const getChannelIcon = (id) => {
     const params = { part: 'snippet', id }
 
     return instance

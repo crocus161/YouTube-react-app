@@ -26,16 +26,21 @@ export const setLoadingSuccess = (payload) => ({
 })
 
 //THUNKS
-export const setSearchResultData = (newSearchQuery) => (dispatch) => {
+export const setSearchResultData = (newSearchQuery) => (dispatch, getState) => {
 
     dispatch(setLoadingSuccess(true));
     //set scroll top of the box to 0 after new request
     dispatch(setMoveUp());
-    //set still query for setMoreData thunk
-    dispatch(setSearchQuerySuccess(newSearchQuery));
 
+    if(newSearchQuery) {
+        //set still query for setMoreData thunk
+        dispatch(setSearchQuerySuccess(newSearchQuery));
+    }
+
+    const q = newSearchQuery || getState().search.searchQuery;
+    console.log(q);
     searchApi
-        .getSearchResultData(newSearchQuery, '')
+        .getSearchResultData(q)
         .then(response => {
             dispatch(setSearchResultDataSuccess(response));
             dispatch(setLoadingSuccess(false));

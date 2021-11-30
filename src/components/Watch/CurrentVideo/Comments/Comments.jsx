@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import Comment from './Comment/Comment';
 import styles from './Comments.module.scss';
+import InfiniteBox from '../../../../common/InfiniteBox/InfiniteBox';
 
-const Comments = ({videoId, setWatchComments, items}) => {
+const Comments = ({videoId, setWatchComments, setMoreWatchComments, items, totalResults}) => {
 
     useEffect(() => {
         let cleanupFunction = false;
@@ -18,7 +19,13 @@ const Comments = ({videoId, setWatchComments, items}) => {
         <div>
             <h2 className={styles.title}>Comments</h2>
 
-            <div>
+            <InfiniteBox
+                fetchMoreData={setMoreWatchComments}
+                totalResults={100000000}
+                scrollableTarget='watch'
+                listLength={items.length}
+                small={false}
+            >
                 {items.map(item => 
                     <Comment 
                         key={item.id} 
@@ -26,7 +33,7 @@ const Comments = ({videoId, setWatchComments, items}) => {
                         replies={item.replies}
                     />
                 )}
-            </div>
+            </InfiniteBox>
         </div>
     );
 }

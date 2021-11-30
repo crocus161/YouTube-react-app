@@ -9,7 +9,6 @@ import CurrentWatchSkeleton from '../../../common/Skeletons/CurrentWatchSkeleton
 
 const CurrentVideo = ({ videoId, watchVideo, setWatchData }) => {
     const { contentDetails, statistics, snippet, loading } = watchVideo;
-    console.log(loading);
 
     useEffect(() => {
         let cleanupFunction = false;

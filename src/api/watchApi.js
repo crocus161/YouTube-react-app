@@ -24,10 +24,9 @@ const getRelatedVideoData = (videoId='', pageToken='') => {
     .then(response => response.data);
 }
 
-const getCommentsData = (videoId='') => {
+const getCommentsData = (videoId='', pageToken='') => {
     const params = {
-        part: 'snippet,replies',
-        videoId
+        part: 'snippet', videoId, pageToken
     }
 
     return instance

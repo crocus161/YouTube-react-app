@@ -1,8 +1,9 @@
-import { SET_WATCH_COMMENTS } from './actions';
+import { SET_MORE_WATCH_COMMENTS, SET_WATCH_COMMENTS } from './actions';
 
 const initialState = {
     items: [],
-    nextPageToken: ''
+    nextPageToken: '',
+    pageInfo: {}
 };
 
 const commentsWatchReducer = (state = initialState, action) => {
@@ -10,8 +11,14 @@ const commentsWatchReducer = (state = initialState, action) => {
         case SET_WATCH_COMMENTS: 
             return {
                 ...state,
-                items: action.payload.items,
-                nextPageToken: action.payload.nextPageToken
+                ...action.payload
+            }
+        case SET_MORE_WATCH_COMMENTS: 
+            return {
+                ...state,
+                items: [...state.items, ...action.payload.items],
+                nextPageToken: action.payload.nextPageToken,
+                pageInfo: action.payload.pageInfo
             }
         default:
             return state

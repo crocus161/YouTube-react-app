@@ -8,7 +8,12 @@ const Statistics = ({statistics, snippet}) => {
     return (
         <div className={styles.statistics}>
 
-            <p>{snippet?.channelTitle}</p>
+            <p 
+                className={styles.channel__title}
+                title={snippet?.channelTitle}
+            >
+                {snippet?.channelTitle}
+            </p>
 
             <p>{statistics?.viewCount 
                     ? (+statistics?.viewCount).toLocaleString() 

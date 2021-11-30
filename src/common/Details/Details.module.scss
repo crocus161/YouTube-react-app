@@ -1,0 +1,22 @@
+@import '../../mixins.scss';
+@import '../../variables.scss';
+
+
+.details{
+
+    p{
+        @include textOverflow(2);
+    }
+
+    button{
+        @include accentText;
+    }
+}
+
+.active{
+    height: unset;
+    p{
+        height: 100%;
+        @include textOverflow(unset);
+    }
+}

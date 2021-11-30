@@ -7,9 +7,16 @@ import {ReactComponent as LaterIcon} from '../assets/icons/later.svg';
 import {ReactComponent as LikesIcon} from '../assets/icons/likes.svg';
 import {ReactComponent as SettingsIcon} from '../assets/icons/settings.svg';
 import {ReactComponent as FeedbackIcon} from '../assets/icons/feedback.svg';
-import { EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SETTINGS, SUBS, TRENDS } from './consts';
+import {ReactComponent as SearchIcon} from '../assets/icons/search.svg';
+import { EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SEARCH, SETTINGS, SUBS, TRENDS } from './consts';
 
 export const publicLinks = [
+    {
+        title: 'Search',
+        Icon: SearchIcon,
+        path: SEARCH,
+        id: SEARCH
+    },
     {
         title: 'Explore',
         Icon: ExploreIcon,
@@ -22,15 +29,15 @@ export const publicLinks = [
         path: TRENDS,
         id: TRENDS
     },
+]
+
+export const privateLinks = [
     {
         title: 'Subscription',
         Icon: SubIcon,
         path: SUBS,
         id: SUBS
     },
-]
-
-export const privateLinks = [
     {
         title: 'Library',
         Icon: LibIcon,
@@ -42,12 +49,6 @@ export const privateLinks = [
         Icon: HistoryIcon,
         path: HISTORY,
         id: HISTORY
-    },
-    {
-        title: 'Watch later',
-        Icon: LaterIcon,
-        path: LATER,
-        id: LATER
     },
     {
         title: 'Likes videos',
