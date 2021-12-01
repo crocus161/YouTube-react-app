@@ -27,7 +27,7 @@ const VideoCardInfo = ({channelTitle, channelId, published, viewCount, vertical}
 
             {channelIcon &&
 
-                <NavLink to={`/channel/:${channelId}`} className={styles.card__icon} >
+                <NavLink to={`/channel/${channelId}`} className={styles.card__icon} >
                     <LazyLoadImage
                         src={channelIcon}
                         alt={channelTitle}
@@ -38,9 +38,9 @@ const VideoCardInfo = ({channelTitle, channelId, published, viewCount, vertical}
 
             {!vertical &&
                 <>
-                    <p className={styles.channel__title}>
+                    <NavLink to={`/channel/${channelId}`} className={styles.channel__title}>
                         {decode(channelTitle)}
-                    </p>
+                    </NavLink>
 
                     <p className={styles.views__count}>
                         {`${numbersFormat(viewCount)} views`}

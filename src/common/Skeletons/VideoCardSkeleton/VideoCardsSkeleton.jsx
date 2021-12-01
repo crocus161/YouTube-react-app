@@ -1,11 +1,12 @@
+import CustomTheme from '../CustomTheme';
+import Skeleton from 'react-loading-skeleton';
 import styles from './VideoCardsSkeletons.module.scss';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const VideoCardsSkeleton = ({ vertical, small }) => {
 
     if (vertical) {
         return (
-            <SkeletonTheme baseColor='#343a40' color='#343a40' highlightColor='#3c4147' borderRadius={10}>
+            <CustomTheme>
                 <div className={`${styles.vertical__wrapper} ${small ? styles.small : ''}`}>
                     <Skeleton height={small ? 120 : 175}></Skeleton>
                     <Skeleton height={small ? 48 : 55}></Skeleton>
@@ -17,12 +18,12 @@ const VideoCardsSkeleton = ({ vertical, small }) => {
                     </div>
                     {!small && <Skeleton height={25}></Skeleton>}
                 </div>
-            </SkeletonTheme>
+            </CustomTheme>
         )
     }
 
     return (
-        <SkeletonTheme baseColor='#343a40' color='#343a40' highlightColor='#3c4147'>
+        <CustomTheme>
             <div className={`${styles.horizontal__wrapper} ${small ? styles.small : ''}`}>
                 <Skeleton width={300} height={180} borderRadius={10}></Skeleton>
                 <div className={styles.horizontal__meta}>
@@ -42,7 +43,7 @@ const VideoCardsSkeleton = ({ vertical, small }) => {
                     <Skeleton height={65}></Skeleton>
                 </div>
             </div>
-        </SkeletonTheme>
+        </CustomTheme>
     )
 }
 

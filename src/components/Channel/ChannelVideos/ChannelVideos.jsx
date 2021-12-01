@@ -1,15 +1,31 @@
 import { useEffect } from 'react';
+import CardsBoxContainer from '../../../containers/CardsBoxContainer';
 
-const ChannelVideos = ({ channelId, setChannelVideos }) => {
-    
+const ChannelVideos = ({ channelId, setChannelVideos, setMoreChannelVideos, items, totalResults, loading }) => {
+
     useEffect(() => {
-        const playlistId = channelId.replace(/UC/, 'UU');
-        setChannelVideos(playlistId);
+        let cleanupFunction = false;
+
+        if(!cleanupFunction) {
+            const playlistId = channelId.replace(/UC/, 'UU');
+            setChannelVideos(playlistId);
+        }
+
+        return () => cleanupFunction = true;
     }, [channelId, setChannelVideos])
 
 
     return (
-        <h1>Video</h1>
+        <CardsBoxContainer
+            fetchMoreData={setMoreChannelVideos}
+            totalResults={totalResults}
+            listLength={items.length}
+            title='Channel video'
+            loading={loading}
+            vertical={true}
+            small={false}
+            items={items}
+        />
     );
 }
 

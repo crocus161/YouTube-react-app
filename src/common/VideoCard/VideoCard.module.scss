@@ -124,6 +124,13 @@
         font-size: 14px;
         @include textOverflow(2);
     }
+
+    .channel__title{
+        color: $light-text;
+        text-decoration: none;
+        position: relative;
+        z-index: 6;
+    }
 }
 
 .horizontal{

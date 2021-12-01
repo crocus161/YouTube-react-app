@@ -5,7 +5,7 @@ import errorHoc from '../hoc/errorHoc/errorHoc';
 import { setMoreSearchResultData } from '../store/Search/actions';
 
 const mapStateToProps = (state) => ({
-    searchResultList: state.search.items,
+    items: state.search.items,
     totalResults: state.search.pageInfo?.totalResults,
     loading: state.search.loading
 })

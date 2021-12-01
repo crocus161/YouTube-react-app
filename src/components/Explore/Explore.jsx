@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import CardsBoxContainer from '../../containers/CardsBoxContainer';
-import VideoCardsSkeleton from '../../common/Skeletons/VideoCardSkeleton/VideoCardsSkeleton';
-import VideoCard from '../../common/VideoCard/VideoCard';
 
 const Explore = ({ explore, setExploreData, setMoveUp, setMoreExploreData}) => {
     const { items, totalResults, loading } = explore;
@@ -25,16 +23,10 @@ const Explore = ({ explore, setExploreData, setMoveUp, setMoreExploreData}) => {
             totalResults={totalResults}
             fetchMoreData={setMoreExploreData}
             small={false}
-        >
-            {loading
-                ? [...Array(items.length || 24)].map((_, i) => (
-                    <VideoCardsSkeleton key={i} vertical={true} small={false} />
-                ))
-                : items.map((item, i) => (
-                    <VideoCard key={i} vertical={true} small={false} data={item} />
-                ))
-            }
-        </CardsBoxContainer>
+            loading={loading}
+            items={items}
+            vertical={true}
+        />
     )
 }
 

@@ -1,0 +1,36 @@
+@import '../../../mixins.scss';
+@import '../../../variables.scss';
+
+.info{
+    margin: 0px 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: $thin;
+}
+
+.meta{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: $text;
+}
+
+.channel{
+    &__ava{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+    }
+}
+
+.subscribe{
+    width: 130px;
+    height: 45px;
+    border-radius: 10px;
+    border: $thin-accent;
+    color: $text;
+    text-align: center;
+}
+

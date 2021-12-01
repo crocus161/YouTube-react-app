@@ -29,6 +29,8 @@
 }
 
 .channel__title{
+    color: $text;
+    text-decoration: none;
     max-width: 130px;
     @include textOverflow;
 }

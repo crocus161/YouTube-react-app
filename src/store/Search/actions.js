@@ -38,7 +38,6 @@ export const setSearchResultData = (newSearchQuery) => (dispatch, getState) => {
     }
 
     const q = newSearchQuery || getState().search.searchQuery;
-    console.log(q);
     searchApi
         .getSearchResultData(q)
         .then(response => {

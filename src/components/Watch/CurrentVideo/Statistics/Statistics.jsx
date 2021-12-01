@@ -3,17 +3,19 @@ import {ReactComponent as DislikeHeartIcon} from '../../../../assets/icons/heart
 import moment from 'moment';
 import numbersFormat from '../../../../utils/numbersFormat';
 import styles from './Statistics.module.scss';
+import { NavLink } from 'react-router-dom';
 
 const Statistics = ({statistics, snippet}) => {
     return (
         <div className={styles.statistics}>
 
-            <p 
+            <NavLink 
+                to={`/channel/${snippet?.channelId}`} 
                 className={styles.channel__title}
                 title={snippet?.channelTitle}
             >
                 {snippet?.channelTitle}
-            </p>
+            </NavLink>
 
             <p>{statistics?.viewCount 
                     ? (+statistics?.viewCount).toLocaleString() 

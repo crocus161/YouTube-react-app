@@ -1,6 +1,8 @@
-import { SET_CHANNEL_DATA } from './actions';
+import { SET_CHANNEL_DATA, SET_CHANNEL_LOADING } from './actions';
 
-const initialState = {};
+const initialState = {
+    loading: false
+};
 
 const channelDataReducer = (state = initialState, action) => {
     switch(action.type) {
@@ -8,6 +10,11 @@ const channelDataReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ...action.payload
+            }
+        case SET_CHANNEL_LOADING: 
+            return {
+                ...state,
+                loading: action.payload
             }
         default:
             return state
