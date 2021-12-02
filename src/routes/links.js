@@ -33,12 +33,6 @@ export const publicLinks = [
 
 export const privateLinks = [
     {
-        title: 'Subscription',
-        Icon: SubIcon,
-        path: SUBS,
-        id: SUBS
-    },
-    {
         title: 'Library',
         Icon: LibIcon,
         path: LIBRARY,
@@ -51,10 +45,16 @@ export const privateLinks = [
         id: HISTORY
     },
     {
-        title: 'Likes videos',
+        title: 'Like videos',
         Icon: LikesIcon,
         path: LIKES,
         id: LIKES
+    },
+    {
+        title: 'Subscription',
+        Icon: SubIcon,
+        path: SUBS,
+        id: SUBS
     },
 ]
 

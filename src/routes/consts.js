@@ -5,6 +5,7 @@ export const TRENDS = '/trends';
 export const SEARCH = '/search';
 export const WATCH = '/watch';
 export const ERROR = '/error';
+export const NOT_FOUND = '/notFound'
 
 export const LIBRARY = '/library';
 export const HISTORY = '/history';

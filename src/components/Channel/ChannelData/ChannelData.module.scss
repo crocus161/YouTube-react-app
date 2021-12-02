@@ -28,9 +28,6 @@
 .subscribe{
     width: 130px;
     height: 45px;
-    border-radius: 10px;
-    border: $thin-accent;
-    color: $text;
-    text-align: center;
+    @include button;
 }
 

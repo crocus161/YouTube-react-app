@@ -4,7 +4,9 @@ import Watch from '../components/Watch/Watch';
 import ExploreContainer from '../containers/ExploreContainer';
 import SearchContainer from '../containers/SearchContainer';
 import TrendingContainer from '../containers/TrendingContainer';
-import { CHANNEL, ERROR, EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SEARCH, SETTINGS, SUBS, TRENDS, WATCH } from './consts';
+import LikeVideosContainer from '../containers/LikeVideosContainer';
+import { CHANNEL, ERROR, EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, NOT_FOUND, SEARCH, SETTINGS, SUBS, TRENDS, WATCH } from './consts';
+import PageNotFound from '../components/PageNotFound/PageNotFound';
 
 const DefCom = () => <h1>Default component</h1>
 
@@ -18,6 +20,11 @@ export const publicRoutes = [
         path: ERROR,
         id: ERROR,
         Component: Error
+    },
+    {
+        path: NOT_FOUND,
+        id: NOT_FOUND,
+        Component: PageNotFound
     },
     {
         path: `${WATCH}/:videoId`,
@@ -39,14 +46,14 @@ export const publicRoutes = [
         id: TRENDS,
         Component: TrendingContainer
     },
+];
+
+export const privateRoutes = [
     {
         path: SUBS,
         id: SUBS,
         Component: DefCom
-    }
-];
-
-export const privateRoutes = [
+    },
     {
         path: LIBRARY,
         id: LIBRARY,
@@ -65,7 +72,7 @@ export const privateRoutes = [
     {
         path: LIKES,
         id: LIKES,
-        Component: DefCom
+        Component: LikeVideosContainer
     },
 ];
 

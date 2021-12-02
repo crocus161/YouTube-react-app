@@ -8,8 +8,8 @@ const KEY2 = process.env.REACT_APP_API_KEY2;//-
 export const instance = axios.create({
     baseURL: URL,
     params: {
-        key: KEY1,
+        key: KEY,
         regionCode: 'UA',
-        maxResults: 24,
+        maxResults: 12,
     }
 });

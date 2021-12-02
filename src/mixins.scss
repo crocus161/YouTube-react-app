@@ -18,3 +18,35 @@
         @include accentText;
     }
 }
+
+@mixin button {
+    border-radius: 10px;
+    border: $thin-accent;
+    color: $text;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        width: 100%;
+        height: 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: $accent;
+        border-radius: 50% 50% 0 0;
+        transition: $fst-transition;
+        z-index: -1;
+    }
+
+    &:hover::before {
+        height: 150%;
+    }
+
+    &:focus-visible{
+        color: $accent;
+        filter: drop-shadow($accent-shadow);
+    }
+}
