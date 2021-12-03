@@ -18,7 +18,8 @@ const RouteMap = () => {
                 <Route key={id} path={path} element={<Component />} end/>
             ))}
 
-            <Route path='*' element={<Navigate to={NOT_FOUND} />} /> 
+            <Route path='/' element={<Navigate to={EXPLORE} />} />
+            <Route path='*' element={<Navigate to={NOT_FOUND} />} />
         </Routes>
     );
 }

@@ -1,9 +1,11 @@
-import { likeVideosApi } from '../../api/likeVideosApi';
+import { likeApi } from '../../api/likeApi';
 import { setError } from '../Error/actions';
 
 export const SET_LIKE_VIDEOS = 'LIKE_VIDEOS/SET_LIKE_VIDEOS';
 export const SET_MORE_LIKE_VIDEOS = 'LIKE_VIDEOS/SET_MORE_LIKE_VIDEOS';
 export const SET_LIKE_LOADING = 'LIKE_VIDEOS/SET_LIKE_LOADING';
+export const SET_LIKE_RATE_VIDEO = 'RATE/SET_LIKE_RATE_VIDEO';
+export const SET_DISLIKE_RATE_VIDEO = 'RATE/SET_DISLIKE_RATE_VIDEO';
 
 //ACTION CREATORS
 const setLikeVideosSuccess = (payload) => ({
@@ -18,6 +20,15 @@ const setLikeLoadingSuccess = (payload) => ({
     type: SET_LIKE_LOADING, payload
 });
 
+export const setLikeRateVideo = (payload) => ({
+    type: SET_LIKE_RATE_VIDEO, payload
+});
+
+export const setDislikeRateVideo = (payload) => ({
+    type: SET_DISLIKE_RATE_VIDEO, payload
+})
+
+
 //THUNKS
 export const setLikeVideos = () => (dispatch, getState) => {
     
@@ -25,7 +36,7 @@ export const setLikeVideos = () => (dispatch, getState) => {
 
     dispatch(setLikeLoadingSuccess(true));
 
-    likeVideosApi
+    likeApi
         .getLikeVideos(accessToken, accessTokenType)
         .then(response => {
             dispatch(setLikeVideosSuccess(response));
@@ -39,9 +50,9 @@ export const setLikeVideos = () => (dispatch, getState) => {
 export const setMoreLikeVideos = () => (dispatch, getState) => {
 
     const {accessToken, accessTokenType} = getState().auth,
-        pageToken = getState().likeVideos.nextPageToken;
+        pageToken = getState().like.nextPageToken;
 
-    likeVideosApi
+    likeApi
         .getLikeVideos(accessToken, accessTokenType, pageToken)
         .then(response => {
             dispatch(setMoreLikeVideosSuccess(response));
@@ -49,4 +60,32 @@ export const setMoreLikeVideos = () => (dispatch, getState) => {
         .catch(error => {
             dispatch(setError(true));
         });
+}
+
+export const setRateVideo = (videoId, type) => (dispatch, getState) => {
+    const {accessToken, accessTokenType} = getState().auth;
+    likeApi
+        .rateVideo(accessToken, accessTokenType, videoId, type)
+        .then(() => {
+            type === 'like' 
+                ? dispatch(setLikeRateVideo())
+                : dispatch(setDislikeRateVideo())
+        })
+        .catch()
+}
+
+export const setRatingVideo = (videoId) => (dispatch, getState) => {
+    
+    const {accessToken, accessTokenType, isAuth} = getState().auth;
+
+    if(isAuth) {
+        likeApi
+            .getRating(accessToken, accessTokenType, videoId)
+            .then(response => {
+                response === 'like' 
+                    ? dispatch(setLikeRateVideo())
+                    : dispatch(setDislikeRateVideo())
+            })
+            .catch();
+    }
 }

@@ -7,6 +7,8 @@ import TrendingContainer from '../containers/TrendingContainer';
 import LikeVideosContainer from '../containers/LikeVideosContainer';
 import { CHANNEL, ERROR, EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, NOT_FOUND, SEARCH, SETTINGS, SUBS, TRENDS, WATCH } from './consts';
 import PageNotFound from '../components/PageNotFound/PageNotFound';
+import Construction from '../components/Construction/Construction';
+import SubsChannelContainer from '../containers/SubsChannelContainer';
 
 const DefCom = () => <h1>Default component</h1>
 
@@ -52,22 +54,22 @@ export const privateRoutes = [
     {
         path: SUBS,
         id: SUBS,
-        Component: DefCom
+        Component: SubsChannelContainer
     },
     {
         path: LIBRARY,
         id: LIBRARY,
-        Component: DefCom
+        Component: Construction
     },
     {
         path: HISTORY,
         id: HISTORY,
-        Component: DefCom
+        Component: Construction
     },
     {
         path: LATER,
         id: LATER,
-        Component: DefCom
+        Component: Construction
     },
     {
         path: LIKES,
@@ -80,11 +82,11 @@ export const metaRoutes = [
     {
         path: FEEDBACK,
         id: FEEDBACK,
-        Component: DefCom
+        Component: Construction
     },
     {
         path: SETTINGS,
         id: SETTINGS,
-        Component: DefCom
+        Component: Construction
     },
 ];

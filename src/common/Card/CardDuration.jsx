@@ -1,9 +1,9 @@
 import moment from 'moment';
-import styles from './VideoCard.module.scss';
+import styles from './Card.module.scss';
 import { useEffect, useState } from 'react';
 import { cardsApi } from '../../api/cardApi';
 
-const VideoCardDuration = ({contentDetails, videoId}) => {
+const CardDuration = ({contentDetails, videoId}) => {
     const [duration, setDuration] = useState(null);
 
     useEffect(() => {
@@ -41,4 +41,4 @@ const VideoCardDuration = ({contentDetails, videoId}) => {
     )
 }
 
-export default VideoCardDuration;
+export default CardDuration;

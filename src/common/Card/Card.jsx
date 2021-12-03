@@ -1,34 +1,41 @@
-import styles from './VideoCard.module.scss';
+import styles from './Card.module.scss';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { NavLink } from 'react-router-dom';
 import { WATCH } from '../../routes/consts';
-import VideoCardInfo from './VideoCardInfo';
-import VideoCardDuration from './VideoCardDuration';
+import CardInfo from './CardInfo';
+import CardDuration from './CardDuration';
 import { fullStringFormat, decode } from '../../utils/stringFormat.js'
+import { CHANNEL } from '../../routes/consts';
 
-const VideoCard = ({ data, vertical, small }) => {
+const Card = ({ data, vertical, small }) => {
 
     const { snippet, contentDetails, statistics } = data;
+
     const videoId = data.id?.videoId || data.contentDetails?.videoId || data.id;
+    const channelId = snippet?.resourceId ? snippet?.resourceId.channelId : snippet?.channelId;
     
+    const isChannelCard = data.id?.kind === 'youtube#channel' || data.kind === 'youtube#subscription';
+    const to = isChannelCard ? `${CHANNEL}/${channelId}` : `${WATCH}/${videoId}`
+
     return (
         <div className={`
             ${styles.card} 
             ${vertical ? styles.vertical : styles.horizontal}
             ${small ? styles.small : ''}
+            ${isChannelCard ? styles.channel : ''}
         `}>
 
-            <NavLink to={`${WATCH}/${videoId}`} className={styles.card__overlay} />
+            <NavLink to={to} className={styles.card__overlay} />
 
             <div className={styles.card__img}>
 
-                <LazyLoadImage 
-                    src={snippet?.thumbnails.medium.url} 
-                    alt={snippet?.title} 
+                <LazyLoadImage
+                    src={snippet?.thumbnails.medium.url}
+                    alt={snippet?.title}
                     effect='blur'
                 />
 
-                <VideoCardDuration 
+                <CardDuration
                     contentDetails={contentDetails}
                     videoId={videoId}
                 />
@@ -37,20 +44,21 @@ const VideoCard = ({ data, vertical, small }) => {
 
             <div className={styles.card__meta}>
 
-                <NavLink 
-                    to={`${WATCH}/${videoId}`} 
-                    className={styles.card__title} 
+                <NavLink
+                    to={to}
+                    className={styles.card__title}
                     title={snippet?.title}
                 >
                     {snippet?.title ? decode(snippet?.title) : null}
                 </NavLink>
 
-                <VideoCardInfo 
+                <CardInfo
                     vertical={vertical}
-                    channelTitle={snippet?.channelTitle}
+                    isChannel={isChannelCard}
                     channelId={snippet?.channelId}
                     published={snippet?.publishedAt}
                     viewCount={statistics?.viewCount}
+                    channelTitle={snippet?.channelTitle}
                 />
 
                 <p className={styles.card__description}>
@@ -62,4 +70,4 @@ const VideoCard = ({ data, vertical, small }) => {
     );
 }
 
-export default VideoCard;
+export default Card;

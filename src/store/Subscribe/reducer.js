@@ -1,4 +1,4 @@
-import { SET_LIKE_LOADING, SET_LIKE_VIDEOS, SET_MORE_LIKE_VIDEOS } from './actions';
+import { SET_SUBS_LOADING, SET_SUBS_CHANNEL, SET_MORE_SUBS_CHANNEL } from './actions';
 
 const initialState = {
     items: [],
@@ -6,21 +6,21 @@ const initialState = {
     loading: false
 };
 
-const likeVideosReducer = (state = initialState, action) => {
+const subsReducer = (state = initialState, action) => {
     switch(action.type) {
-        case SET_LIKE_VIDEOS:
+        case SET_SUBS_CHANNEL:
             return {
                 ...state,
                 ...action.payload
             }
-        case SET_MORE_LIKE_VIDEOS:
+        case SET_MORE_SUBS_CHANNEL:
             return {
                 ...state,
                 items: [...state.items, ...action.payload.items],
                 nextPageToken: action.payload.nextPageToken,
                 pageInfo: action.payload.pageInfo
             }
-        case SET_LIKE_LOADING: 
+        case SET_SUBS_LOADING: 
             return {
                 ...state,
                 loading: action.payload
@@ -30,4 +30,4 @@ const likeVideosReducer = (state = initialState, action) => {
     }
 }
 
-export default likeVideosReducer;
+export default subsReducer;

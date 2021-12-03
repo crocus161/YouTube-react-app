@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import styles from './CardsBox.module.scss';
-import VideoCard from '../VideoCard/VideoCard';
+import Card from '../Card/Card';
 import InfiniteBox from '../InfiniteBox/InfiniteBox';
-import VideoCardsSkeleton from '../Skeletons/VideoCardSkeleton/VideoCardsSkeleton'
+import CardsSkeleton from '../Skeletons/CardSkeleton/CardsSkeleton'
 
 const CardsBox = (props) => {
 
@@ -34,14 +34,14 @@ const CardsBox = (props) => {
             >
                 {props.loading
                     ? [...Array(24)].map((_, i) => (
-                        <VideoCardsSkeleton 
+                        <CardsSkeleton 
                             key={i} 
                             small={props.small}
                             vertical={props.vertical} 
                         />
                     ))
                     : props.items.map((item, i) => (
-                        <VideoCard 
+                        <Card 
                             key={i} 
                             data={item} 
                             small={props.small}

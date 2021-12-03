@@ -4,7 +4,8 @@ import RouteMap from '../components/RouteMap/RouteMap';
 import NavbarContainer from '../containers/NavbarContainer';
 import { useEffect } from 'react';
 
-const CLIENT = process.env.REACT_APP_CLIENT_ID;
+const CLIENT = process.env.REACT_APP_CLIENT_ID,
+    CLIENT1 = process.env.REACT_APP_CLIENT_ID1;
 
 const App = () => {
 
@@ -13,7 +14,7 @@ const App = () => {
 
         if (!cleanupFunction) {
             window.gapi.load("client:auth2", () => {
-                window.gapi.auth2.init({ client_id: CLIENT });
+                window.gapi.auth2.init({ client_id: CLIENT1 });
             });
         }
 

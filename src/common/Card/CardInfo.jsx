@@ -1,4 +1,4 @@
-import styles from './VideoCard.module.scss';
+import styles from './Card.module.scss';
 import numbersFormat from '../../utils/numbersFormat';
 import { decode } from '../../utils/stringFormat';
 import moment from 'moment';
@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { cardsApi } from '../../api/cardApi';
 
-const VideoCardInfo = ({channelTitle, channelId, published, viewCount, vertical}) => {
+const CardInfo = ({channelTitle, channelId, published, viewCount, vertical, isChannel}) => {
     const [channelIcon, setChannelIcon] = useState(null);
 
     useEffect(() => {
@@ -25,18 +25,21 @@ const VideoCardInfo = ({channelTitle, channelId, published, viewCount, vertical}
     return (
         <div className={styles.card__info}>
 
-            {channelIcon &&
+            {
+                channelIcon && !isChannel
 
-                <NavLink to={`/channel/${channelId}`} className={styles.card__icon} >
+                ? <NavLink to={`/channel/${channelId}`} className={styles.card__icon} >
                     <LazyLoadImage
                         src={channelIcon}
                         alt={channelTitle}
                         effect='blur'
                     />
                 </NavLink>
+
+                :null
             }
 
-            {!vertical &&
+            {!vertical && !isChannel ?
                 <>
                     <NavLink to={`/channel/${channelId}`} className={styles.channel__title}>
                         {decode(channelTitle)}
@@ -46,6 +49,7 @@ const VideoCardInfo = ({channelTitle, channelId, published, viewCount, vertical}
                         {`${numbersFormat(viewCount)} views`}
                     </p>
                 </>
+                : null
             }
 
             <p className={styles.publishing__date}>
@@ -56,4 +60,4 @@ const VideoCardInfo = ({channelTitle, channelId, published, viewCount, vertical}
     );
 }
 
-export default VideoCardInfo
+export default CardInfo

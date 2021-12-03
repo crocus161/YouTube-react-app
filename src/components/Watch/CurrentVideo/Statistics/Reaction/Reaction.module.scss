@@ -1,0 +1,38 @@
+@import '../../../../../variables.scss';
+@import '../../../../../mixins.scss';
+
+.statistics__reaction{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    button{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        svg{
+            width: 25px;
+            height: 25px;
+            fill: $light-text;
+            stroke: $light-text;
+            transition: $fst-transition;
+        }
+    
+        &:disabled{
+            cursor: default;
+        }
+    
+        &:focus-visible{
+            outline-offset: 2px;
+            outline: 1px solid $accent;
+        }
+    }
+
+    .active{
+        svg{
+            fill: $accent;
+            stroke: $accent;
+        }
+    }
+}
+

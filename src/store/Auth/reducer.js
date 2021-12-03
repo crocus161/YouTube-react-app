@@ -10,7 +10,6 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
     switch(action.type) {
         case SET_SIGN_IN:
-            console.log(action.payload);
             return {
                 ...state,
                 ...action.payload,

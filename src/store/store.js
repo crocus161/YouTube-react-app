@@ -10,8 +10,9 @@ import relatedWatchReducer from './RelatedWatch/reducer';
 import commentsWatchReducer from './CommentsWatch/reducer';
 import channelDataReducer from './ChannelData/reducer';
 import channelVideosReducer from './ChannelVideos/reducer';
-import likeVideosReducer from './LikeVideos/reducer';
+import likeReducer from './Like/reducer';
 import authReducer from './Auth/reducer';
+import subsReducer from './Subscribe/reducer';
 
 const reducers = combineReducers({
     explore: exploreReducer,
@@ -24,8 +25,9 @@ const reducers = combineReducers({
     commentsWatch: commentsWatchReducer,
     channelData: channelDataReducer,
     channelVideos: channelVideosReducer,
-    likeVideos: likeVideosReducer,
+    like: likeReducer,
     auth: authReducer,
+    subscribe: subsReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

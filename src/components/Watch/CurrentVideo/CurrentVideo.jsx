@@ -7,8 +7,8 @@ import CommentsContainer from '../../../containers/CommentsContainer';
 import CurrentWatchSkeleton from '../../../common/Skeletons/CurrentWatchSkeleton/CurrentWatchSkeleton';
 
 
-const CurrentVideo = ({ videoId, watchVideo, setWatchData }) => {
-    const { contentDetails, statistics, snippet, loading } = watchVideo;
+const CurrentVideo = ({ videoId, watchVideo, setWatchData, setRateVideo, setRatingVideo, rate, isAuth }) => {
+    const { statistics, snippet, loading } = watchVideo;
 
     useEffect(() => {
         let cleanupFunction = false;
@@ -37,8 +37,13 @@ const CurrentVideo = ({ videoId, watchVideo, setWatchData }) => {
                 <h2 className={styles.current__title}>{snippet?.title}</h2>
 
                 <Statistics 
+                    rate={rate}
+                    isAuth={isAuth}
                     snippet={snippet}
+                    videoId={videoId}
                     statistics={statistics}
+                    setRateVideo={setRateVideo}
+                    setRatingVideo={setRatingVideo}
                 />
 
                 <Description 

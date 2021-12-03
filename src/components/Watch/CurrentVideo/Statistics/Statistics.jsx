@@ -1,11 +1,21 @@
-import {ReactComponent as LikeHeartIcon} from '../../../../assets/icons/likes.svg';
-import {ReactComponent as DislikeHeartIcon} from '../../../../assets/icons/heart-dislike.svg';
 import moment from 'moment';
-import numbersFormat from '../../../../utils/numbersFormat';
 import styles from './Statistics.module.scss';
 import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import Reaction from './Reaction/Reaction';
 
-const Statistics = ({statistics, snippet}) => {
+const Statistics = ({statistics, snippet, rate, setRateVideo, setRatingVideo, videoId, isAuth}) => {
+
+    useEffect(() => {
+        let cleanupFunction = false;
+
+        if (!cleanupFunction) {
+            setRatingVideo(videoId);
+        }
+
+        return () => cleanupFunction = true;
+    }, [videoId, setRatingVideo, isAuth]);
+
     return (
         <div className={styles.statistics}>
 
@@ -23,21 +33,15 @@ const Statistics = ({statistics, snippet}) => {
 
             <p>{moment(snippet?.publishedAt).fromNow()}</p>
 
-            <div className={styles.statistics__reaction}>
-
-                <p title={statistics?.likeCount}>
-                    <LikeHeartIcon />
-                    {numbersFormat(statistics?.likeCount)}
-                </p>
-
-                <p title={statistics?.dislikeCount}>
-                    <DislikeHeartIcon />
-                    {numbersFormat(statistics?.dislikeCount)}
-                </p>
-
-            </div>
+            <Reaction 
+                setRateVideo={setRateVideo}
+                statistics={statistics}
+                videoId={videoId}
+                isAuth={isAuth}
+                rate={rate}
+            />
         </div>
-    )
+    );
 }
 
 export default Statistics;

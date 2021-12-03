@@ -10,6 +10,10 @@
 
     button{
         @include accentText;
+        &:focus-visible{
+            outline-offset: 2px;
+            outline: 1px solid $accent;
+        }
     }
 }
 
