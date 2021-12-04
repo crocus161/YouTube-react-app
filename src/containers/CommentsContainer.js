@@ -1,7 +1,7 @@
-import { connect } from 'react-redux';
 import { compose } from 'redux';
-import Comments from '../components/Watch/CurrentVideo/Comments/Comments';
+import { connect } from 'react-redux';
 import errorHoc from '../hoc/errorHoc/errorHoc';
+import Comments from '../components/Watch/CurrentVideo/Comments/Comments';
 import { setWatchComments, setMoreWatchComments } from '../store/CommentsWatch/actions';
 
 const mapStateToProps = (state) => ({

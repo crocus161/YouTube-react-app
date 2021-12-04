@@ -1,0 +1,59 @@
+@import '../../../variables.scss';
+
+.box{
+    position: relative;
+    margin-bottom: 20px;
+    border-bottom: $thin;
+    padding: 0px 5px;
+
+    &::after{
+        display: block;
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+
+        width: 0%;
+        height: 1px;
+        background: $accent;
+        transition: $fst-transition;
+    }
+
+
+    &:focus-within{
+        &::after{
+            width: 100%;
+        }
+    }
+}
+
+.label{
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $light-text;
+    pointer-events: none;
+    transition: $fst-transition;
+}
+
+.input{
+    width: 100%;
+    padding: 5px 60px 5px 5px;
+    color: $text;
+    background: transparent;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+.active{
+    &::after{
+        width: 100%;
+    }
+    .label{
+        left: 25px;
+        opacity: 0;
+    }
+}

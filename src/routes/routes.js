@@ -1,16 +1,15 @@
-import Channel from '../components/Channel/Channel';
 import Error from '../components/Error/Error';
 import Watch from '../components/Watch/Watch';
-import ExploreContainer from '../containers/ExploreContainer';
+import Channel from '../components/Channel/Channel';
 import SearchContainer from '../containers/SearchContainer';
+import ExploreContainer from '../containers/ExploreContainer';
+import FeedbackContainer from '../containers/FeedbackContainer';
 import TrendingContainer from '../containers/TrendingContainer';
-import LikeVideosContainer from '../containers/LikeVideosContainer';
-import { CHANNEL, ERROR, EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, NOT_FOUND, SEARCH, SETTINGS, SUBS, TRENDS, WATCH } from './consts';
 import PageNotFound from '../components/PageNotFound/PageNotFound';
 import Construction from '../components/Construction/Construction';
+import LikeVideosContainer from '../containers/LikeVideosContainer';
 import SubsChannelContainer from '../containers/SubsChannelContainer';
-
-const DefCom = () => <h1>Default component</h1>
+import { CHANNEL, ERROR, EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, NOT_FOUND, SEARCH, SETTINGS, SUBS, TRENDS, WATCH } from './consts';
 
 export const publicRoutes = [
     {
@@ -82,7 +81,7 @@ export const metaRoutes = [
     {
         path: FEEDBACK,
         id: FEEDBACK,
-        Component: Construction
+        Component: FeedbackContainer
     },
     {
         path: SETTINGS,

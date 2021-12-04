@@ -1,11 +1,11 @@
-import styles from './Card.module.scss';
-import numbersFormat from '../../utils/numbersFormat';
-import { decode } from '../../utils/stringFormat';
 import moment from 'moment';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import styles from '../Card.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { cardsApi } from '../../api/cardApi';
+import { cardsApi } from '../../../api/cardApi';
+import { decode } from '../../../utils/stringFormat';
+import numbersFormat from '../../../utils/numbersFormat';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const CardInfo = ({channelTitle, channelId, published, viewCount, vertical, isChannel}) => {
     const [channelIcon, setChannelIcon] = useState(null);
@@ -36,11 +36,13 @@ const CardInfo = ({channelTitle, channelId, published, viewCount, vertical, isCh
                     />
                 </NavLink>
 
-                :null
+                : null
             }
 
-            {!vertical && !isChannel ?
-                <>
+            {
+                !vertical && !isChannel
+                
+                ? <>
                     <NavLink to={`/channel/${channelId}`} className={styles.channel__title}>
                         {decode(channelTitle)}
                     </NavLink>
@@ -49,6 +51,7 @@ const CardInfo = ({channelTitle, channelId, published, viewCount, vertical, isCh
                         {`${numbersFormat(viewCount)} views`}
                     </p>
                 </>
+                
                 : null
             }
 

@@ -4,7 +4,7 @@ import {ReactComponent as LikeHeartIcon} from '../../../../../assets/icons/likes
 import {ReactComponent as DislikeHeartIcon} from '../../../../../assets/icons/heart-dislike.svg';
 
 const Reaction = ({setRateVideo, isAuth, statistics, rate, videoId}) => {
-
+    console.log(rate)
     const handleLike = () => {
         setRateVideo(videoId, 'like');
     }
@@ -19,8 +19,8 @@ const Reaction = ({setRateVideo, isAuth, statistics, rate, videoId}) => {
             <button
                 disabled={!isAuth}
                 onClick={handleLike}
-                title={!isAuth ? 'You must be authorized' : statistics?.likeCount}
                 className={`${rate.like ? styles.active : ''}`}
+                title={!isAuth ? 'You must be authorized' : statistics?.likeCount}
             >
                 <LikeHeartIcon />
                 {numbersFormat(statistics?.likeCount)}
@@ -29,8 +29,8 @@ const Reaction = ({setRateVideo, isAuth, statistics, rate, videoId}) => {
             <button
                 disabled={!isAuth}
                 onClick={handleDislike}
-                title={!isAuth ? 'You must be authorized' : statistics?.dislikeCount}
                 className={`${rate.dislike ? styles.active : ''}`}
+                title={!isAuth ? 'You must be authorized' : statistics?.dislikeCount}
             >
                 <DislikeHeartIcon />
                 {numbersFormat(statistics?.dislikeCount)}

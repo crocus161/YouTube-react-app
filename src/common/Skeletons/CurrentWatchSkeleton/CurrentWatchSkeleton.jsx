@@ -1,6 +1,6 @@
 import CustomTheme from '../CustomTheme';
-import styles from './CurrentWatchSkeleton.module.scss';
 import Skeleton from 'react-loading-skeleton';
+import styles from './CurrentWatchSkeleton.module.scss';
 
 const CurrentWatchSkeleton = () => {
     return (

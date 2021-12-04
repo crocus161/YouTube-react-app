@@ -3,10 +3,17 @@ import styles from './CardsBox.module.scss';
 import Card from '../Card/Card';
 import InfiniteBox from '../InfiniteBox/InfiniteBox';
 import CardsSkeleton from '../Skeletons/CardSkeleton/CardsSkeleton'
+import classNames from 'classnames';
 
 const CardsBox = (props) => {
 
     const scrollBlock = React.createRef();
+    const boxClasses = classNames(
+        styles.box,
+        {
+            [styles.small]: props.small
+        }
+    );
 
     useEffect(() => {
         let cleanupFunction = false;
@@ -20,11 +27,9 @@ const CardsBox = (props) => {
     });
 
     return (
-        <div id="scrollableDiv" className={`${styles.box} ${props.small ? styles.small : ''}`} ref={scrollBlock}>
+        <div id="scrollableDiv" className={boxClasses} ref={scrollBlock}>
 
-            <h1 className={styles.box__title}>
-                {props.title}
-            </h1>
+            <h1 className={styles.box__title}>{props.title}</h1>
 
             <InfiniteBox
                 listLength={props.listLength}
@@ -32,22 +37,17 @@ const CardsBox = (props) => {
                 fetchMoreData={props.fetchMoreData}
                 scrollableTarget="scrollableDiv"
             >
-                {props.loading
+                {
+                    props.loading
+
                     ? [...Array(24)].map((_, i) => (
-                        <CardsSkeleton 
-                            key={i} 
-                            small={props.small}
-                            vertical={props.vertical} 
-                        />
+                        <CardsSkeleton key={i} small={props.small} vertical={props.vertical} />
                     ))
+
                     : props.items.map((item, i) => (
-                        <Card 
-                            key={i} 
-                            data={item} 
-                            small={props.small}
-                            vertical={props.vertical} 
-                        />
+                        <Card key={i} data={item} small={props.small} vertical={props.vertical} />
                     ))
+                    
                 }
             </InfiniteBox>
         </div>

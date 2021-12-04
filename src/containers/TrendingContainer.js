@@ -1,14 +1,14 @@
-import { connect } from 'react-redux';
 import { compose } from 'redux';
-import Trending from '../components/Trending/Trending';
+import { connect } from 'react-redux';
 import errorHoc from '../hoc/errorHoc/errorHoc';
+import Trending from '../components/Trending/Trending';
 import { setTrendingData, setTrendingMoreData } from '../store/Trending/actions';
 
 const mapStateToProps = (state) => ({
     items: state.trending.items,
-    totalResults: state.trending.pageInfo?.totalResults,
+    isFull: state.trending.isFull,
     loading: state.trending.loading,
-    isFull: state.trending.isFull
+    totalResults: state.trending.pageInfo?.totalResults,
 });
 
 export default compose(

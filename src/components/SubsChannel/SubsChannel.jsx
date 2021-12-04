@@ -13,7 +13,6 @@ const SubsChannel = ({ setSubsChannel, setMoreSubsChannel, items, totalResults, 
         return () => cleanupFunction = true;
     }, [setSubsChannel])
 
-
     return (
         <CardsBoxContainer
             fetchMoreData={setMoreSubsChannel}

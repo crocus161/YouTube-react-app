@@ -1,7 +1,7 @@
 import moment from 'moment';
-import styles from './Card.module.scss';
+import styles from '../Card.module.scss';
 import { useEffect, useState } from 'react';
-import { cardsApi } from '../../api/cardApi';
+import { cardsApi } from '../../../api/cardApi';
 
 const CardDuration = ({contentDetails, videoId}) => {
     const [duration, setDuration] = useState(null);
@@ -25,18 +25,12 @@ const CardDuration = ({contentDetails, videoId}) => {
         return () => cleanupFunction = true;
     }, [videoId, contentDetails]);
 
-
     const seconds = moment.duration(duration).asSeconds();
-    const formatDuration = moment.utc(seconds * 1000)
-                                .format('HH:mm:ss')
-                                .replace(/00:/, '');
+    const formatDuration = moment.utc(seconds * 1000).format('HH:mm:ss').replace(/00:/, '');
 
     return (
         <>
-            {
-                duration &&
-                <p className={styles.card__duration}>{formatDuration}</p> 
-            }
+            { duration && <p className={styles.card__duration}>{formatDuration}</p> }
         </>
     )
 }

@@ -13,6 +13,7 @@ import channelVideosReducer from './ChannelVideos/reducer';
 import likeReducer from './Like/reducer';
 import authReducer from './Auth/reducer';
 import subsReducer from './Subscribe/reducer';
+import feedbackReducer from './Feedback/reducer';
 
 const reducers = combineReducers({
     explore: exploreReducer,
@@ -27,7 +28,8 @@ const reducers = combineReducers({
     channelVideos: channelVideosReducer,
     like: likeReducer,
     auth: authReducer,
-    subscribe: subsReducer
+    subscribe: subsReducer,
+    feedback: feedbackReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

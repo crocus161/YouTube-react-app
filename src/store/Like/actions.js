@@ -82,9 +82,8 @@ export const setRatingVideo = (videoId) => (dispatch, getState) => {
         likeApi
             .getRating(accessToken, accessTokenType, videoId)
             .then(response => {
-                response === 'like' 
-                    ? dispatch(setLikeRateVideo())
-                    : dispatch(setDislikeRateVideo())
+                if(response === 'like') dispatch(setLikeRateVideo())
+                else if(response === 'dislike') dispatch(setDislikeRateVideo())
             })
             .catch();
     }

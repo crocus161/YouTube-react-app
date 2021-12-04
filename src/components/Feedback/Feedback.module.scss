@@ -1,0 +1,55 @@
+@import '../../variables.scss';
+@import '../../mixins.scss';
+
+.form__wrapper{
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    width: 500px;
+    height: 100%;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    textarea{
+        flex-grow: 1;
+        width: 100%;
+        padding: 10px;
+        min-height: 100px;
+        max-height: 300px;
+        color: $text;
+        background: transparent;
+        border-radius: 5px;
+        margin-bottom: 10px;
+
+        &:focus-visible{
+            border: $thin-accent;
+            outline: none;
+        }
+    }
+}
+
+.fieldset{
+    border: 0px;
+    legend{
+        display: none;
+    }
+}
+
+.button{
+    width: 100%;
+    height: 40px;
+    @include button;
+}
+
+.title{
+    color: $text;
+    margin-bottom: 10px;
+    @include letterAccent;
+}

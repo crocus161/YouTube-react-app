@@ -1,14 +1,13 @@
-import {ReactComponent as ExploreIcon} from '../assets/icons/explore.svg';
-import {ReactComponent as TrendingIcon} from '../assets/icons/trending.svg';
-import {ReactComponent as SubIcon} from '../assets/icons/subs.svg';
-import {ReactComponent as LibIcon} from '../assets/icons/library.svg';
-import {ReactComponent as HistoryIcon} from '../assets/icons/history.svg';
-import {ReactComponent as LaterIcon} from '../assets/icons/later.svg';
-import {ReactComponent as LikesIcon} from '../assets/icons/likes.svg';
-import {ReactComponent as SettingsIcon} from '../assets/icons/settings.svg';
-import {ReactComponent as FeedbackIcon} from '../assets/icons/feedback.svg';
-import {ReactComponent as SearchIcon} from '../assets/icons/search.svg';
-import { EXPLORE, FEEDBACK, HISTORY, LATER, LIBRARY, LIKES, SEARCH, SETTINGS, SUBS, TRENDS } from './consts';
+import { ReactComponent as SubIcon } from '../assets/icons/subs.svg';
+import { ReactComponent as LibIcon } from '../assets/icons/library.svg';
+import { ReactComponent as LikesIcon } from '../assets/icons/likes.svg';
+import { ReactComponent as SearchIcon } from '../assets/icons/search.svg';
+import { ReactComponent as HistoryIcon } from '../assets/icons/history.svg';
+import { ReactComponent as ExploreIcon } from '../assets/icons/explore.svg';
+import { ReactComponent as TrendingIcon } from '../assets/icons/trending.svg';
+import { ReactComponent as SettingsIcon } from '../assets/icons/settings.svg';
+import { ReactComponent as FeedbackIcon } from '../assets/icons/feedback.svg';
+import { EXPLORE, FEEDBACK, HISTORY, LIBRARY, LIKES, SEARCH, SETTINGS, SUBS, TRENDS } from './consts';
 
 export const publicLinks = [
     {
