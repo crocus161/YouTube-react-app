@@ -1,21 +1,14 @@
-import { SET_FEEDBACK_ERROR, SET_FEEDBACK_SUCCESS} from './actions'
+import { SET_FEEDBACK_STATUS} from './actions'
 
 const initialState = {
-    success: false, 
-    error: false
+    errorStatus: false, 
 }
 
 const feedbackReducer = (state = initialState, action) => {
     switch(action.type) {
-        case SET_FEEDBACK_ERROR: 
+        case SET_FEEDBACK_STATUS: 
             return {
-                success: false,
-                error: true
-            }
-        case SET_FEEDBACK_SUCCESS: 
-            return {
-                success: true,
-                error: false
+                errorStatus: action.payload, 
             }
         default:
             return state

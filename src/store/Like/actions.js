@@ -71,7 +71,6 @@ export const setRateVideo = (videoId, type) => (dispatch, getState) => {
                 ? dispatch(setLikeRateVideo())
                 : dispatch(setDislikeRateVideo())
         })
-        .catch()
 }
 
 export const setRatingVideo = (videoId) => (dispatch, getState) => {
@@ -85,6 +84,5 @@ export const setRatingVideo = (videoId) => (dispatch, getState) => {
                 if(response === 'like') dispatch(setLikeRateVideo())
                 else if(response === 'dislike') dispatch(setDislikeRateVideo())
             })
-            .catch();
     }
 }

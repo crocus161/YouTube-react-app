@@ -4,6 +4,8 @@ import { setError } from '../Error/actions';
 export const SET_SUBS_CHANNEL = 'SUBS/SET_SUBS_CHANNEL';
 export const SET_MORE_SUBS_CHANNEL = 'SUBS/SET_MORE_SUBS_CHANNEL';
 export const SET_SUBS_LOADING = 'SUBS/SET_SUBS_LOADING';
+export const SET_SUBS_STATUS = 'SUBS/SET_SUBS_STATUS';
+export const SET_SUBS_STATUS_ID = 'SUBS/SET_SUBS_STATUS_ID';
 
 //ACTION CREATORS
 const setSubsChannelSuccess = (payload) => ({
@@ -17,6 +19,14 @@ const setMoreSubsChannelSuccess = (payload) => ({
 const setSubsLoadingSuccess = (payload) => ({
     type: SET_SUBS_LOADING, payload
 });
+
+const setSubsStatusSuccess = (payload) => ({
+    type: SET_SUBS_STATUS, payload
+})
+
+const setSubsStatusId = (payload) => ({
+    type: SET_SUBS_STATUS_ID, payload
+})
 
 //THUNKS
 export const setSubsChannel = () => (dispatch, getState) => {
@@ -49,4 +59,37 @@ export const setMoreSubsChannel = () => (dispatch, getState) => {
         .catch(error => {
             dispatch(setError(true));
         });
+}
+
+export const setSubsStatus = (channelId) => (dispatch, getState) => {
+    const {accessToken, accessTokenType} = getState().auth;
+
+    subscribesApi
+        .getSubscriptionStatus(accessToken, accessTokenType, channelId)
+        .then(response => {
+            const status = response.length > 0;
+            dispatch(setSubsStatusSuccess(status));
+            if(status) dispatch(setSubsStatusId(response[0].id));
+        });
+}
+
+export const setSubscribe = (channelId) => (dispatch, getState) => {
+    const {accessToken, accessTokenType} = getState().auth;
+
+    subscribesApi
+        .subscribe(accessToken, accessTokenType, channelId)
+        .then(response => {
+            dispatch(setSubsStatusSuccess(true));
+        })
+}
+
+export const outSubscribe = () => (dispatch, getState) => {
+    const {accessToken, accessTokenType} = getState().auth,
+        subscribeId = getState().subscribe.subStatusId;
+
+    subscribesApi
+        .refuse(accessToken, accessTokenType, subscribeId)
+        .then(response => {
+            dispatch(setSubsStatusSuccess(false));
+        })
 }

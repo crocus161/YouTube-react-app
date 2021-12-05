@@ -1,4 +1,4 @@
-import { watchApi } from '../../api/watchApi';
+import { commentApi } from '../../api/commentApi';
 import { setError } from '../Error/actions';
 
 export const SET_WATCH_COMMENTS = 'COMMENTS_WATCH/SET_WATCH_COMMENTS';
@@ -14,7 +14,7 @@ const setMoreWatchCommentsSuccess = (payload) => ({
 
 //THUNKS
 export const setWatchComments = (videoId) => (dispatch) => {
-    watchApi
+    commentApi
         .getCommentsData(videoId)
         .then(response => {
             dispatch(setWatchCommentsSuccess(response));
@@ -29,7 +29,7 @@ export const setMoreWatchComments = () => (dispatch, getState) => {
     const pageToken = getState().commentsWatch.nextPageToken,
         videoId = getState().currentWatch.id;
 
-    watchApi
+    commentApi
         .getCommentsData(videoId, pageToken)
         .then(response => {
             dispatch(setMoreWatchCommentsSuccess(response));

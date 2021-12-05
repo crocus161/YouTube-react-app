@@ -1,0 +1,33 @@
+@import '../../../../mixins.scss';
+@import '../../../../variables.scss';
+
+.form{
+    margin: 20px 0px;
+    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-bottom: $thin;
+}
+
+.field{
+    width: 100%;
+    padding: 10px;
+    max-height: 60px;
+    color: $text;
+    background: transparent;
+    border-radius: 5px;
+
+    &:focus-visible{
+        border: $thin-accent;
+        outline: none;
+    }
+}
+
+.button{
+    width: 150px;
+    height: 60px;
+    @include button;
+}

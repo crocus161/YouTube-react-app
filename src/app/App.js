@@ -14,7 +14,7 @@ const App = () => {
 
         if (!cleanupFunction) {
             window.gapi.load("client:auth2", () => {
-                window.gapi.auth2.init({ client_id: CLIENT1 });
+                window.gapi.auth2.init({ client_id: CLIENT });
             });
         }
 

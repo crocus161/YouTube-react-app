@@ -14,6 +14,7 @@ import likeReducer from './Like/reducer';
 import authReducer from './Auth/reducer';
 import subsReducer from './Subscribe/reducer';
 import feedbackReducer from './Feedback/reducer';
+import commentsFormReducer from './CommentsForm/reducer';
 
 const reducers = combineReducers({
     explore: exploreReducer,
@@ -29,7 +30,8 @@ const reducers = combineReducers({
     like: likeReducer,
     auth: authReducer,
     subscribe: subsReducer,
-    feedback: feedbackReducer
+    feedback: feedbackReducer,
+    commentsForm: commentsFormReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

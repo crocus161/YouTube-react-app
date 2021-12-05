@@ -24,14 +24,4 @@ const getRelatedVideoData = (videoId='', pageToken='') => {
     .then(response => response.data);
 }
 
-const getCommentsData = (videoId='', pageToken='') => {
-    const params = {
-        part: 'snippet', videoId, pageToken
-    }
-
-    return instance
-    .get('commentThreads', { params })
-    .then(response => response.data);
-}
-
-export const watchApi = { getWatchVideoData, getRelatedVideoData, getCommentsData };
+export const watchApi = { getWatchVideoData, getRelatedVideoData };

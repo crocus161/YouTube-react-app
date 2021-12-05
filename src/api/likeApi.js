@@ -8,23 +8,18 @@ const getLikeVideos = (accessToken, accessTokenType, pageToken='') => {
             myRating: 'like',
             pageToken
         },
-        headers: {
-            Authorization: `${accessTokenType} ${accessToken}`
-        }
+        headers: { Authorization: `${accessTokenType} ${accessToken}` }
     }).then(response => response.data);
 }
 
 const rateVideo = (accessToken, accessTokenType, videoId, type) => {
-
     return instance
     .post('videos/rate', null, {
         params: {
             id: videoId,
             rating: type
         },
-        headers: {
-            Authorization: `${accessTokenType} ${accessToken}`
-        }
+        headers: { Authorization: `${accessTokenType} ${accessToken}` }
     })
     .then(response => response);
 }
@@ -32,12 +27,8 @@ const rateVideo = (accessToken, accessTokenType, videoId, type) => {
 const getRating = (accessToken, accessTokenType, videoId) => {
     return instance
     .get('videos/getRating', {
-        params: {
-            id: videoId
-        },
-        headers: {
-            Authorization: `${accessTokenType} ${accessToken}`
-        }
+        params: { id: videoId },
+        headers: { Authorization: `${accessTokenType} ${accessToken}`}
     })
     .then(response => response.data.items[0].rating);
 }

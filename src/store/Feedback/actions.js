@@ -1,26 +1,24 @@
 import { feedbackApi } from '../../api/feedbackApi';
 
-export const SET_FEEDBACK_SUCCESS = 'FEEDBACK/SET_FEEDBACK_SUCCESS';
-export const SET_FEEDBACK_ERROR = 'FEEDBACK/SET_FEEDBACK_ERROR';
+export const SET_FEEDBACK_STATUS = 'FEEDBACK/SET_FEEDBACK_STATUS';
 
 //ACTION CREATORS
 export const setFeedbackStatusSuccess = (payload) => ({
-    type: SET_FEEDBACK_SUCCESS, payload
+    type: SET_FEEDBACK_STATUS, payload
 })
 
-export const setFeedbackStatusError = (payload) => ({
-    type: SET_FEEDBACK_ERROR, payload
-})
 
 //THUNKS
 export const sendFeedback = (message) => (dispatch) => {
     feedbackApi
         .postFeedback(message)
         .then(response => {
-            dispatch(setFeedbackStatusSuccess(response));
+            if(response.ok) {
+                dispatch(setFeedbackStatusSuccess(false));
+            }
         })
         .catch(error => {
-            dispatch(setFeedbackStatusError(true));
+            dispatch(setFeedbackStatusSuccess(true));
         });
 }
 

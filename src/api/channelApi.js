@@ -2,7 +2,7 @@ import { instance } from './api';
 
 const getChannelData = (channelId) => {
     const params = {
-        part: 'snippet,contentDetails,statistics',
+        part: 'snippet,contentDetails,statistics,id',
         id: channelId
     }
 

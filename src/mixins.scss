@@ -27,6 +27,7 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
+    user-select: none;
 
     &::before {
         content: '';
@@ -41,8 +42,15 @@
         z-index: -1;
     }
 
+    &:disabled{
+        cursor: default;
+        pointer-events: none;
+        color: $light-text;
+        border: $thin;
+    }
+
     &:hover::before {
-        height: 150%;
+        height: 170%;
     }
 
     &:focus-visible{

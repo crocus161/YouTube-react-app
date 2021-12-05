@@ -1,10 +1,19 @@
+import { useEffect } from 'react';
 import styles from './Reaction.module.scss'
 import numbersFormat from '../../../../../utils/numbersFormat';
 import {ReactComponent as LikeHeartIcon} from '../../../../../assets/icons/likes.svg';
 import {ReactComponent as DislikeHeartIcon} from '../../../../../assets/icons/heart-dislike.svg';
 
-const Reaction = ({setRateVideo, isAuth, statistics, rate, videoId}) => {
-    console.log(rate)
+const Reaction = ({setRateVideo, isAuth, statistics, rate, videoId, setRatingVideo}) => {
+
+    useEffect(() => {
+        let cleanupFunction = false;
+
+        if (!cleanupFunction) setRatingVideo(videoId);
+
+        return () => cleanupFunction = true;
+    }, [videoId, setRatingVideo, isAuth]);
+
     const handleLike = () => {
         setRateVideo(videoId, 'like');
     }

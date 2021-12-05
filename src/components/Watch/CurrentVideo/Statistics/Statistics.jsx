@@ -1,21 +1,9 @@
 import moment from 'moment';
-import styles from './Statistics.module.scss';
 import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
 import Reaction from './Reaction/Reaction';
+import styles from './Statistics.module.scss';
 
 const Statistics = ({statistics, snippet, rate, setRateVideo, setRatingVideo, videoId, isAuth}) => {
-
-    useEffect(() => {
-        let cleanupFunction = false;
-
-        if (!cleanupFunction) {
-            setRatingVideo(videoId);
-        }
-
-        return () => cleanupFunction = true;
-    }, [videoId, setRatingVideo, isAuth]);
-
     return (
         <div className={styles.statistics}>
 
@@ -34,6 +22,7 @@ const Statistics = ({statistics, snippet, rate, setRateVideo, setRatingVideo, vi
             <p>{moment(snippet?.publishedAt).fromNow()}</p>
 
             <Reaction 
+                setRatingVideo={setRatingVideo}
                 setRateVideo={setRateVideo}
                 statistics={statistics}
                 videoId={videoId}

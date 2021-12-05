@@ -31,3 +31,10 @@
     @include button;
 }
 
+.subscribe__active.subscribe{
+    &::before{
+        height: 200px;
+    }
+}
+
+
