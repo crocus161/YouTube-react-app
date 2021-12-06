@@ -8,6 +8,10 @@
     flex-grow: 1;
     padding: 20px;
 
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+
     &__title{
         color: $text;
         @include letterAccent;

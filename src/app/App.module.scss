@@ -1,4 +1,5 @@
 @import '../variables.scss';
+@import '../mixins.scss';
 
 .app{
     width: 100%;
@@ -16,4 +17,10 @@
     
     display: flex;
     flex-direction: column;
+}
+
+@include laptop{
+    .wrapper{
+        max-width: calc(100vw - 80px);
+    }
 }

@@ -25,3 +25,11 @@
         @include letterAccent;
     }
 }
+
+@include phone{
+    .hgroup{
+        h2,p{
+            font-size: 16px;
+        }
+    }
+}

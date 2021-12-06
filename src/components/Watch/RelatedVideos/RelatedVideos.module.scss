@@ -1,3 +1,5 @@
+@import '../../../mixins.scss';
+
 .related{
     display: flex;
     margin-left: 20px;
@@ -6,4 +8,10 @@
     padding: 0;
     position: sticky;
     top: 0;
+}
+
+@include tablet{
+    .related{
+        display: none;
+    }
 }

@@ -196,3 +196,37 @@
         }
     }
 }
+
+@include tablet{
+    .horizontal{
+        flex-direction: column;
+        width: 200px;
+        .card__img{
+            margin-right: 0px;
+            height: 120px;
+            max-width: 200px;
+            min-width: 200px;
+        }
+    }
+    .vertical{
+        width: 200px;
+        .card__img{
+            height: 130px;
+            max-width: 200px;
+            min-width: 200px;
+        }
+    }
+}
+
+@include phone{
+    .horizontal,
+    .vertical{
+        width: 100%;
+        .card__img{
+            max-width: 100%;
+            min-width: 100%;
+            aspect-ratio: 1.8;
+            height: unset;
+        }
+    }
+}

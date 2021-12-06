@@ -1,4 +1,5 @@
 @import '../../../variables.scss';
+@import '../../../mixins.scss';
 
 .form{
     flex-grow: 1;
@@ -112,5 +113,11 @@
     to{
         opacity: 1;
         transform: translateY(-50%) scale(1);
+    }
+}
+
+@include phone{
+    .form{
+        margin-right: 20px;
     }
 }

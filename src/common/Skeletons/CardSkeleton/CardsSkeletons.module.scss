@@ -1,8 +1,25 @@
+@import '../../../mixins.scss';
+
 .horizontal__wrapper{
     display: flex;
     align-items: center;
     width: 100%;
     height: 175px;
+}
+.horizontal__hidden__lines{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.horizontal__description{ 
+    flex-grow: 1;
+    height: 65px;
+}
+.horizontal__img{
+    flex-grow: 1;
+    max-width: 300px;
+    min-width: 300px;
+    height: 180px;
 }
 
 .horizontal__meta{
@@ -31,18 +48,6 @@
     flex-grow: 1;
 }
 
-
-@media screen and (max-width: 1000px){
-    .horizontal__line{
-        display: none;
-    }
-
-    .horizontal__lines{
-        display: none;
-    }
-}
-
-
 // VERTICAL
 
 .vertical__wrapper{
@@ -66,3 +71,45 @@
     }
 }
 
+
+
+@include tablet{
+    .vertical__wrapper{
+        width: 200px;
+    }
+
+    .horizontal__img{
+        max-width: 100%;
+        min-width: 100%;
+        height: 120px;
+        margin-bottom: 20px;
+    }
+    .horizontal__meta{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .horizontal__wrapper{
+        margin: 10px;
+        width: 200px;
+        height: 300px;
+        flex-direction: column;
+    }
+    .horizontal__hidden__lines{
+        display: none;
+    }
+    .horizontal__lines,
+    .horizontal__description{
+        width: 100%;
+    }
+    
+    .horizontal__description{
+        height: 35px;
+    }
+}
+
+@include phone{
+    .vertical__wrapper,
+    .horizontal__wrapper{
+        width: 100%;
+    }
+}

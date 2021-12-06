@@ -1,4 +1,5 @@
 @import '../../../variables.scss';
+@import '../../../mixins.scss';
 
 .icon__wrapper{
     width: 35px;
@@ -44,4 +45,10 @@
 
 .active.icon{
     fill: $accent;
+}
+
+@include phone{
+    .icon__wrapper{
+        display: none;
+    }
 }

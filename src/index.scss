@@ -1,3 +1,4 @@
+@import './mixins.scss';
 @import './variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
@@ -58,5 +59,11 @@ a{
     }
     to{
         transform: rotateX(20deg);
+    }
+}
+
+@include laptop{
+    .yt-icon-letters {
+        display: none;
     }
 }

@@ -1,4 +1,5 @@
 @import '../../variables.scss';
+@import '../../mixins.scss';
 
 .sidebar {
     min-width: 270px;
@@ -10,6 +11,10 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
 }
 
 .logo{
@@ -106,5 +111,35 @@
 
     &::after{
         opacity: 1;
+    }
+}
+
+
+@include laptop{
+    .logo{
+        min-width: 123px;
+
+    }
+    .sidebar {
+        max-width: 70px;
+        min-width: 70px;
+        padding: 0px 15px 15px 15px;
+        overflow-x: hidden;
+    }
+    .navlink{
+        justify-content: center;
+        &__icon{
+            margin-right: 0px;
+            max-width: 25px;
+            min-width: 25px;
+        }
+        &__title{
+            display: none;
+        }
+
+        &__wrapper{
+            justify-content: center;
+            gap: 50px;
+        }
     }
 }

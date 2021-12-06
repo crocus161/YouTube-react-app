@@ -3,11 +3,16 @@ import { ReactComponent as MicroIcon } from '../../../assets/icons/microphone.sv
 import React, { useState, useEffect } from 'react';
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-const mic = new SpeechRecognition();
+let mic;
 
-mic.continuous = true;
-mic.interimResults = true;
-mic.lang = 'en-US';
+if(SpeechRecognition) {
+    mic = new SpeechRecognition();
+    mic.continuous = true;
+    mic.interimResults = true;
+    mic.lang = 'en-US';
+}
+
+
 
 const Listen = React.memo(({ setSearchValue }) => {
 
@@ -16,6 +21,8 @@ const Listen = React.memo(({ setSearchValue }) => {
     useEffect(() => {
 
         const handleListen = () => {
+            if(!SpeechRecognition) return;
+
             if (isListening) mic.start();
             else mic.stop();
     
@@ -41,6 +48,10 @@ const Listen = React.memo(({ setSearchValue }) => {
 
         handleListen();
     }, [isListening, setSearchValue])
+
+    if(!SpeechRecognition) {
+        return null;
+    }
 
     return (
         <button className={styles.icon__wrapper} 
