@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This project is available now on this [page](https://react-app-cab0d.web.app/explore).
+
 ## Available Scripts
 
 In the project directory, you can run:
