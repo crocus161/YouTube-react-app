@@ -2,9 +2,9 @@ import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import styles from './Input.module.scss';
 
-const Input = ({label, id, name, type='text', defaultText=''}) => {
+const Input = ({label, id, name, type='text', defaultText='', ...props}) => {
 
-    const [value, setValue] = useState(defaultText);
+    const [value, setValue] = useState('');
 
     useEffect(() => {
         setValue(defaultText);
@@ -33,9 +33,10 @@ const Input = ({label, id, name, type='text', defaultText=''}) => {
             <input 
                 id={id}
                 required
+                {...props}
                 type={type} 
                 name={name}
-                value={value} 
+                value={value}
                 autoComplete='off' 
                 onChange={handleChange}
                 className={styles.input} 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Input from './Input/Input';
+import Input from '../../common/Input/Input';
 import styles from './Feedback.module.scss';
 
 const Feedback = ({ errorStatus, sendFeedback, userName, isAuth }) => {
