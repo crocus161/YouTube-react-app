@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import Comment from './Comment/Comment';
 import styles from './Comments.module.scss';
 import InfiniteBox from '../../../../common/InfiniteBox/InfiniteBox';
+import Error from '../../../Error/Error';
 
-const Comments = ({videoId, setWatchComments, setMoreWatchComments, items, totalResults}) => {
+const Comments = ({videoId, setWatchComments, setMoreWatchComments, items, error}) => {
 
     useEffect(() => {
         let cleanupFunction = false;
@@ -14,6 +15,15 @@ const Comments = ({videoId, setWatchComments, setMoreWatchComments, items, total
 
         return () => cleanupFunction = true;
     }, [videoId, setWatchComments]);
+
+    if(error) {
+        return (
+            <div>
+                <h2 className={styles.title}>Comments isn't working now</h2>
+                <Error />
+            </div>
+        );
+    }
 
     return (
         <div>

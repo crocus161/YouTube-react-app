@@ -22,9 +22,8 @@ const ChannelVideos = ({ channelId, setChannelVideos, setMoreChannelVideos, item
             listLength={items.length}
             title='Channel video'
             loading={loading}
-            vertical={true}
-            small={false}
             items={items}
+            vertical
         />
     );
 }

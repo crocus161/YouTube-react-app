@@ -21,9 +21,8 @@ const LikeVideos = ({ setLikeVideos, setMoreLikeVideos, items, totalResults, loa
             listLength={items.length}
             title='Like videos'
             loading={loading}
-            vertical={true}
-            small={false}
             items={items}
+            vertical
         />
     );
 }

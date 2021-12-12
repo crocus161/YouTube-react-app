@@ -22,10 +22,9 @@ const Explore = ({ explore, setExploreData, setMoveUp, setMoreExploreData}) => {
             listLength={items.length}
             totalResults={totalResults}
             fetchMoreData={setMoreExploreData}
-            small={false}
             loading={loading}
             items={items}
-            vertical={true}
+            vertical
         />
     )
 }

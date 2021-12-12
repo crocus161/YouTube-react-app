@@ -7,10 +7,9 @@ const Search = ({items, setMoreSearchResultData, totalResults, loading}) => {
             listLength={items.length}
             totalResults={totalResults}
             fetchMoreData={setMoreSearchResultData}
-            small={false}
             loading={loading}
             items={items}
-            vertical={true}
+            vertical
         />
     );
 }

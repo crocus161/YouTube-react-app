@@ -20,8 +20,6 @@ const SubsChannel = ({ setSubsChannel, setMoreSubsChannel, items, totalResults, 
             listLength={items.length}
             title='Subscribes'
             loading={loading}
-            vertical={false}
-            small={false}
             items={items}
         />
     );

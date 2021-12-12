@@ -19,10 +19,8 @@ const Trending = ({ items, setTrendingData, setTrendingMoreData, totalResults, l
             listLength={items.length}
             totalResults={totalResults}
             fetchMoreData={setTrendingMoreData}
-            small={false}
             loading={loading}
             items={items}
-            vertical={false}
         />
     );
 }
