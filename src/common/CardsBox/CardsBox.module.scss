@@ -25,3 +25,15 @@
         font-size: 20px;
     }
 }
+
+@include phone{
+    .box__title{
+        font-size: 24px;
+    }
+    .box.small{
+        .box__title{
+            font-size: 18px;
+        }
+    }
+    
+}

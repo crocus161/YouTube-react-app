@@ -11,8 +11,8 @@ const ChannelDataSkeleton = () => {
                     <Skeleton width='70px' height='70px' circle></Skeleton>
 
                     <div className={styles.statistics}>
-                        <Skeleton width='200px' height='35px'></Skeleton>
-                        <Skeleton width='200px' height='25px'></Skeleton>
+                        <Skeleton height='35px'></Skeleton>
+                        <Skeleton height='25px'></Skeleton>
                     </div>
                 </div>
 
