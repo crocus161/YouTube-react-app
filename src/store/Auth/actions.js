@@ -16,9 +16,9 @@ export const setSignIn = () => (dispatch) => {
         .then(response => {
             dispatch(setSingInSuccess(response));
         })
-        // .catch(error => {
-        //     dispatch(setError(true));
-        // });
+        .catch(error => {
+            dispatch(setError(true));
+        });
 }
 
 
