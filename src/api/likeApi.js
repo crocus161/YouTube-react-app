@@ -9,7 +9,8 @@ const getLikeVideos = (accessToken, accessTokenType, pageToken='') => {
             pageToken
         },
         headers: { Authorization: `${accessTokenType} ${accessToken}` }
-    }).then(response => response.data);
+    })
+    .then(response => response.data);
 }
 
 const rateVideo = (accessToken, accessTokenType, videoId, type) => {

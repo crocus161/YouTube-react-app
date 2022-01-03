@@ -1,11 +1,9 @@
 
-
 const signIn = () => {
     return window.gapi.auth2
         .getAuthInstance()
         .signIn({ scope: 'https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtubepartner' })
         .then(googleUser => {
-            console.log(googleUser);
             return ({
                 userProfile: {
                     image: googleUser.getBasicProfile().getImageUrl(),
