@@ -10,7 +10,6 @@ export const setSingInSuccess = (payload) => ({
 
 //THUNKS
 export const setSignIn = () => (dispatch) => {
-    console.log('work set sign in');
     authApi
         .signIn()
         .then(response => {

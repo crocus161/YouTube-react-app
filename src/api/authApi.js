@@ -11,8 +11,8 @@ const signIn = () => {
                     name: googleUser.getBasicProfile().getName(),
                     id: googleUser.getBasicProfile().getId(),
                 }, 
-                accessToken: googleUser.vc.access_token,
-                accessTokenType: googleUser.vc.token_type
+                accessToken: googleUser.getAuthResponse().access_token,
+                accessTokenType: googleUser.getAuthResponse().token_type
             }) 
         })
 }
