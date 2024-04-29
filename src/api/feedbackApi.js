@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const URL = process.env.REACT_APP_TELEGRAM_URL,
-    ID = process.env.REACT_APP_TELEGRAM_ID,
-    TOKEN = process.env.REACT_APP_TELEGRAM_TOKEN;
+const URL = import.meta.env.VITE_APP_TELEGRAM_URL,
+    ID = import.meta.env.VITE_APP_TELEGRAM_ID,
+    TOKEN = import.meta.env.VITE_APP_TELEGRAM_TOKEN;
 
 const postFeedback = (message) => {
     return axios

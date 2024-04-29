@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import styles from './Reaction.module.scss'
 import numbersFormat from '../../../../../utils/numbersFormat';
-import {ReactComponent as LikeHeartIcon} from '../../../../../assets/icons/likes.svg';
-import {ReactComponent as DislikeHeartIcon} from '../../../../../assets/icons/heart-dislike.svg';
+import LikeHeartIcon from '../../../../../assets/icons/likes.svg?react';
+import DislikeHeartIcon from '../../../../../assets/icons/heart-dislike.svg?react';
 
 const Reaction = ({setRateVideo, isAuth, statistics, rate, videoId, setRatingVideo}) => {
 

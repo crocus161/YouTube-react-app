@@ -1,5 +1,5 @@
 import styles from './Authentication.module.scss';
-import {ReactComponent as AuthIcon} from '../../assets/icons/authentication.svg';
+import AuthIcon from '../../assets/icons/authentication.svg?react';
 
 const Authentication = () => {
     return (

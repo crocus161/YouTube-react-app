@@ -1,4 +1,4 @@
-import {ReactComponent as WarningIcon} from '../../assets/icons/warning.svg';
+import WarningIcon from '../../assets/icons/warning.svg?react';
 import styles from './Error.module.scss';
 
 const Error = () => {

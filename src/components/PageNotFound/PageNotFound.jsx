@@ -1,5 +1,5 @@
 import styles from './PageNotFound.module.scss';
-import {ReactComponent as PageNotFoundIcon} from '../../assets/icons/page-not-found.svg';
+import PageNotFoundIcon from '../../assets/icons/page-not-found.svg?react';
 
 const PageNotFound = () => {
     return (

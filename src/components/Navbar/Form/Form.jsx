@@ -1,6 +1,6 @@
 import styles from './Form.module.scss'
 import { createRef } from 'react';
-import { ReactComponent as SearchIcon } from '../../../assets/icons/search.svg';
+import SearchIcon from '../../../assets/icons/search.svg?react';
 import { useNavigate } from 'react-router';
 import { SEARCH } from '../../../routes/consts';
 

@@ -1,5 +1,5 @@
 import styles from './Listen.module.scss';
-import { ReactComponent as MicroIcon } from '../../../assets/icons/microphone.svg';
+import MicroIcon from '../../../assets/icons/microphone.svg?react';
 import React, { useState, useEffect } from 'react';
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;

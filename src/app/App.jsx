@@ -4,8 +4,8 @@ import RouteMap from '../components/RouteMap/RouteMap';
 import NavbarContainer from '../containers/NavbarContainer';
 import { useEffect } from 'react';
 
-const CLIENT = process.env.REACT_APP_CLIENT_ID,
-    CLIENT1 = process.env.REACT_APP_CLIENT_ID1;
+const CLIENT = import.meta.env.VITE_APP_CLIENT_ID,
+    CLIENT1 = import.meta.env.VITE_APP_CLIENT_ID1;
 
 const App = () => {
 

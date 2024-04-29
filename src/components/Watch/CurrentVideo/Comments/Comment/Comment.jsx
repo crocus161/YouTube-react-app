@@ -3,7 +3,7 @@ import styles from './Comment.module.scss';
 import { parseHtml } from '../../../../../utils/stringFormat';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Details from '../../../../../common/Details/Details';
-import { ReactComponent as LikeHeartIcon } from '../../../../../assets/icons/likes.svg';
+import LikeHeartIcon from '../../../../../assets/icons/likes.svg?react';
 
 const Comment = ({ data, replies }) => {
 

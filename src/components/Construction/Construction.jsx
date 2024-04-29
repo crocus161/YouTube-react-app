@@ -1,5 +1,5 @@
 import styles from './Construction.module.scss';
-import {ReactComponent as ConstructionIcon} from '../../assets/icons/construction.svg';
+import ConstructionIcon from '../../assets/icons/construction.svg?react';
 
 const Construction = () => {
     return (

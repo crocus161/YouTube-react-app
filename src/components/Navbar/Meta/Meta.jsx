@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from './Meta.module.scss';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { ReactComponent as BellIcon } from '../../../assets/icons/bell.svg';
+import BellIcon from '../../../assets/icons/bell.svg?react';
 
 const Meta = React.memo(({ isAuth, setSignIn, userProfile }) => {
-    console.log('render');
     return (
         <>
             <button className={styles.bell}><BellIcon /></button>

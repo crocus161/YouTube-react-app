@@ -12,7 +12,6 @@ const getCommentsData = (videoId='', pageToken='') => {
 }
 
 const addComment = (accessToken, accessTokenType, videoId, text) => {
-    console.log(accessToken, accessTokenType, videoId, text)
     const obj = {
         snippet: {
             videoId,
