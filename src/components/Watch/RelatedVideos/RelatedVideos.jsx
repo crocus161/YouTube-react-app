@@ -2,21 +2,20 @@ import { useEffect } from 'react';
 import styles from './RelatedVideos.module.scss';
 import CardsBoxContainer from '../../../containers/CardsBoxContainer';
 
-const RelatedVideos = ({ setMoreRelatedData, setRelatedData, relatedVideos, videoId, setMoveUp }) => {
-
-    const {items, totalResults, loading} = relatedVideos;
+const RelatedVideos = ({ watchVideo, setMoreRelatedData, setRelatedData, relatedVideos, setMoveUp }) => {
+    const channelId = watchVideo.snippet?.channelId;
+    const { items, totalResults, loading } = relatedVideos;
 
     useEffect(() => {
         let cleanupFunction = false;
 
-        if (!cleanupFunction && videoId) {
-            setRelatedData(videoId);
-            //set scroll top of the box to 0 after new request
+        if (!cleanupFunction && channelId) {
+            setRelatedData(channelId);
             setMoveUp();
         }
 
         return () => cleanupFunction = true;
-    }, [videoId, setRelatedData, setMoveUp]);
+    }, [channelId, setRelatedData, setMoveUp]);
 
     return (
         <div className={styles.related}>

@@ -11,17 +11,16 @@ const getWatchVideoData = (videoId) => {
     .then(response => response.data.items[0]);
 }
 
-const getRelatedVideoData = (videoId='', pageToken='') => {
+const getRelatedVideoData = (channelId='', pageToken='') => {
     const params = {
-        part: 'snippet',
-        relatedToVideoId: videoId,
-        type: 'video',
+        part: 'snippet,contentDetails',
+        playlistId: channelId.replace(/UC/, 'UU'),
         pageToken
     }
 
     return instance
-    .get('search', { params })
-    .then(response => response.data);
+      .get('playlistItems', { params })
+      .then(response => response.data);
 }
 
 export const watchApi = { getWatchVideoData, getRelatedVideoData };

@@ -5,6 +5,7 @@
 .details{
 
     p{
+        white-space: pre-line;
         @include textOverflow(2);
     }
 

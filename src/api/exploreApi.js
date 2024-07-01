@@ -3,7 +3,7 @@ import { instance } from './api';
 const getExploreVideoData = (pageToken) => {
     const params = { 
         part: 'snippet',
-        relatedToVideoId: 'Ks-_Mh1QhMc',
+        q: 'ted talks',
         type: 'video',
         pageToken
     }

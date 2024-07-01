@@ -19,11 +19,11 @@ const setRelatedLoadingSuccess = (payload) => ({
 })
 
 //THUNKS
-export const setRelatedData = (videoId) => (dispatch) => {
+export const setRelatedData = (channelId) => (dispatch) => {
     dispatch(setRelatedLoadingSuccess(true));
     
     watchApi
-        .getRelatedVideoData(videoId)
+        .getRelatedVideoData(channelId)
         .then(response => {
             dispatch(setRelatedDataSuccess(response));
             dispatch(setRelatedLoadingSuccess(false));
@@ -36,10 +36,10 @@ export const setRelatedData = (videoId) => (dispatch) => {
 export const setMoreRelatedData = () => (dispatch, getState) => {
 
     const pageToken = getState().relatedWatch.nextPageToken,
-        videoId = getState().currentWatch.id;
+      channelId = getState().currentWatch.snippet.channelId;
 
     watchApi
-        .getRelatedVideoData(videoId, pageToken)
+        .getRelatedVideoData(channelId, pageToken)
         .then(response => {
             dispatch(setMoreRelatedDataSuccess(response));
         })

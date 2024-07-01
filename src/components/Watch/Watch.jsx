@@ -10,7 +10,7 @@ const Watch = () => {
     return (
         <div className={styles.watch} id='watch'>
             <WatchCurrentContainer videoId={videoId} />
-            <WatchRelatedContainer videoId={videoId} />
+            <WatchRelatedContainer />
         </div>
     );
 }

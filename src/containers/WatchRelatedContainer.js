@@ -6,6 +6,7 @@ import RelatedVideos from '../components/Watch/RelatedVideos/RelatedVideos';
 import { setMoreRelatedData, setRelatedData } from '../store/RelatedWatch/actions';
 
 const mapStateToProps = (state) => ({
+    watchVideo: state.currentWatch,
     relatedVideos: state.relatedWatch,
 });
 
